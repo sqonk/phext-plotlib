@@ -39,7 +39,7 @@ Forthcoming, refer to class comments and functions for the interim.
 ## Example
 
 ``` php
-use sqonk\phext\plotlib\Plot;
+use sqonk\phext\plotlib\BulkPlot;
 
 $plot = new BulkPlot;
 
