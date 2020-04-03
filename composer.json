@@ -19,7 +19,7 @@
 		"files": [
 			"src/BulkPlot.class.php", 
 			"src/JPGraphUtils.php", 
-			"src/Region.class.php", 
+			"src/Region.class.php"
 		]
     }
 }
