@@ -1,0 +1,25 @@
+{
+    "name": "sqonk/phext-plotlib",
+    "description": "PlotLib is a wrapper class for the PHP charting library JPGraph for producing charts in bulk.",
+    "type": "library",
+    "require": {
+		"php": "^7.3",
+		"amenadiel/jpgraph": "^4",
+        "sqonk/phext-core": "0.3.2"
+    },
+	"keywords": ["graph","chart","plot"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Theo Howell",
+            "email": "sqonk@sqonk.com.au"
+        }
+    ],
+	"autoload": {
+		"files": [
+			"src/BulkPlot.class.php", 
+			"src/JPGraphUtils.php", 
+			"src/Region.class.php", 
+		]
+    }
+}
