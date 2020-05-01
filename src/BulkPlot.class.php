@@ -401,7 +401,6 @@ class BulkPlot
                     
                 $p = ($name && $prefix) ? $prefix."_" : $prefix;
                 $path = sprintf("%s/%s%s.png", $this->folderPath, $p, $name);
-				println('outputing chart', $path);
                 file_put_contents($path, $img);
             }
             
