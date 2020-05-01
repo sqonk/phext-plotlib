@@ -26,9 +26,13 @@ class jputils
     static public function render(JPGraph\Graph $chart)
     {
         ob_start();
-		$chart->Stroke();
-        $img = ob_get_contents();
-        ob_end_clean();
+		try {
+			$chart->Stroke();
+	        $img = ob_get_contents();
+		}
+		finally {
+			ob_end_clean();
+		}
         return $img;
     }
 }
