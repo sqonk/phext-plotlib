@@ -5,7 +5,7 @@
     "require": {
 		"php": "^7.3",
 		"amenadiel/jpgraph": "^4",
-        "sqonk/phext-core": "0.3.2"
+        "sqonk/phext-core": "^0.3.2"
     },
 	"keywords": ["graph","chart","plot"],
     "license": "MIT",
