@@ -257,8 +257,7 @@ class BulkPlot
 				$auxPlot->SetColor($clr);
 				$auxPlot->SetWeight($thickness);
 				
-				$auxlabel = arrays::get($auxseries, 'legend');
-				if ($auxlabel)
+				if ($auxlabel = arrays::get($auxseries, 'legend'))
 					$auxPlot->SetLegend($auxlabel);
 				
 				$chart->Add($auxPlot);
