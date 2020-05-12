@@ -61,6 +61,9 @@ class BulkPlot
         if (! class_exists(JPGraph\Graph::class)) {
             throw new \Exception("PlotLib depends on the JPGraph library, you can include it in your project with: 'composer require amenadiel/jpgraph'.");
         }
+        
+        $rgb = new \Amenadiel\JpGraph\Util\RGB;
+        $this->colours = array_keys($rgb->rgb_table);
     }
     
 	/* 
@@ -220,12 +223,7 @@ class BulkPlot
         if (! empty($graphData['title']))
             $chart->title->Set($graphData['title']);
         
-        $colours = [
-            'blue', 'orange', 'green', 'brown', 'yellow', 'purple', 
-            'aqua', 'gray', 'darkblue', 'darkorange', 'darkgreen', 'darkyellow', 
-            'darkpurple', 'darkgray', 'lightblue', 'lightorange', 'lightgreen', 
-            'lightyellow', 'lightpurple', 'lightgray'
-        ];
+        $colours = &$this->colours;
         $ccount = count($colours);
         $classes = [
             'line' => 'LinePlot',
