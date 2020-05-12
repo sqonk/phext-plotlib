@@ -393,12 +393,37 @@ class BulkPlot
         {
             $img = $this->build($data, $width, $height);
             if ($writeToFile && php_sapi_name() == 'cli')
-            {                    
-                $name = isset($data['title']) ? str_replace(' ', '_', strings::clean($data['title'])) : '';
-                    
-                $p = ($name && $prefix) ? $prefix."_" : $prefix;
-                $path = sprintf("%s/%s%s.png", $this->folderPath, $p, $name);
-                file_put_contents($path, $img);
+            {   
+                if ($prefix)
+                {
+                    // BulkPlot global name prefix has been set.
+                    $legend = $data['legend'] ?? '';
+                    if ($legend) {
+                        if (is_array($legend))
+                            $legend = implode(' ', $legend);
+                        $legend = str_replace(' ', '_', strings::clean($legend));
+                    }
+                    else
+                        $legend = uniqid();
+
+                    $fileName = "{$prefix}_{$legend}";
+                }   
+                else
+                {
+                    /*
+                        No global prefix set. File name will be in order of priority:
+                            - title, if one is set.
+                            - legend, if one is set.
+                            - random string failing everything else.
+                    */
+                    $chartName = $data['title'] ?? $data['legend'] ?? uniqid();
+                    $fileName = str_replace(' ', '_', $chartName);
+                }  
+                            
+                if (strlen($fileName) > 253)
+                    $fileName = strings::truncate($fileName, 253, 'c');
+                
+                file_put_contents("{$this->folderPath}/{$fileName}.png", $img);
             }
             
             $out[] = $img;
