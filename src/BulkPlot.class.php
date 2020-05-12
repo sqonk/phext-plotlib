@@ -416,7 +416,16 @@ class BulkPlot
                             - legend, if one is set.
                             - random string failing everything else.
                     */
-                    $chartName = $data['title'] ?? $data['legend'] ?? uniqid();
+                    if (isset($data['title']))
+                        $chartName = $data['title'];
+                    else if (isset($data['legend'])) {
+                        $chartName = $data['legend'];
+                        if (is_array($chartName))
+                            $chartName = implode(' ', $chartName);
+                    }
+                    else
+                        $chartName = uniqid();
+
                     $fileName = str_replace(' ', '_', $chartName);
                 }  
                             
