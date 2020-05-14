@@ -22,16 +22,6 @@ Via Composer
 $ composer require sqonk/phext-plotlib
 ```
 
-## Graph types supported
-
-* line
-* bar
-* linefill - line graph with filled area
-* barstacked - stacked bars.
-* scatter
-* box
-* stock - candle stick graph of open,high,low,close sets.
-
 ## Usage
 
 The <code>BulkPlot</code> class is the primary mechanism of the package and has the following public methods:
@@ -87,10 +77,11 @@ These are the various options available when adding a plot to the object:
     - barstacked: bar chart with each series stacked atop for each data point.
     - scatter: scatter chart.
     - box:	Similar to a stock plot but with a fifth median value.
+    - stock: Candle stick plot with each data point consisting of a open, high, low and close value.
 
 * <code>$series</code> An array of multiple series (values) to be plotted.
 
-* <code>$options</code> An associative arrat containing the chart configuration.
+* <code>$options</code> An associative array containing the chart configuration.
     - title: Title of the rendered chart.
     - xseries: An array of values to use as the x-series. 
     - xformatter: A callback function used to format the labels of the x-series. Should take one paremeter (the value) and return the transformed value.
