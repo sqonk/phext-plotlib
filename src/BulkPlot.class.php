@@ -63,7 +63,9 @@ class BulkPlot
         }
         
         $rgb = new \Amenadiel\JpGraph\Util\RGB;
-        $this->colours = array_keys($rgb->rgb_table);
+        $this->colours = array_values(array_filter(array_keys($rgb->rgb_table), function($name) {
+            return ! strings::contains($name, 'white') && ! strings::contains($name, 'light');
+        }));
     }
     
 	/* 
