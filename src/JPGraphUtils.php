@@ -26,6 +26,7 @@ class jputils
     static public function render(JPGraph\Graph $chart)
     {
         $error = null;
+        
         ob_start();
 		try {
 			$chart->Stroke();
@@ -38,10 +39,8 @@ class jputils
 			ob_end_clean();
 		}
         
-        if ($error) {
-            println($error->getMessage());
-            return null;
-        }
+        if ($error) 
+            throw new \Exception($error->getMessage());
         
         return $img;
     }
