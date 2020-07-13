@@ -124,8 +124,7 @@ $plot->add('line', [
     ], [
     'title' => 'lines',
     'xseries' => range(1, 10),
-    'xformatter' => fn($v) => "Point $v",
-    'labelangle' => 45
+    'xformatter' => fn($v) => "Pt $v",
 ]);
 
 // add a stacked bar chart.
