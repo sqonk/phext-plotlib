@@ -142,17 +142,21 @@ $plot->add('barstacked', [
 // this will output two files called 'lines.png' and 'bars.png'.
 $plot->output_path('plotlibtests')->render();
 ```
- 
+
+![Lines](https://sqonk.com/opensource/phext/plotlib/docs/images/lines.png)
+
+![Bars](https://sqonk.com/opensource/phext/plotlib/docs/images/bars.png)
+
 ## Credits
 
 Theo Howell
- 
+
 ## License
 
 The MIT License (MIT). Please see [License File](license.txt) for more information. 
- 
+
 Please see applicable project pages for all external dependancies and thier own licensing agreements.
- 
+
 ## JPGrapgh
 
 This library utilises the excellent JPGraph library as its charting engine.
