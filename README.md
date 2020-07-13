@@ -5,7 +5,7 @@
 
 PlotLib is a wrapper for the PHP charting library JPGraph. It is designed for quickly outputting basic charts in bulk. Many options can be configured as needed but all have defaults.
 
-You should ideally have a general understanding of how JPGraph works in order to get the most out of this library.
+You should ideally have a general understanding of how [JPGraph](https://jpgraph.net) works in order to get the most out of this library.
 
 
 ## About PHEXT
