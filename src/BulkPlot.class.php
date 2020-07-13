@@ -393,51 +393,53 @@ class BulkPlot
         
         foreach ($this->graphs as $data)
         {
-            $img = $this->build($data, $width, $height);
-            if ($writeToFile && php_sapi_name() == 'cli')
-            {   
-                if ($prefix)
-                {
-                    // BulkPlot global name prefix has been set.
-                    $legend = $data['legend'] ?? '';
-                    if ($legend) {
-                        if (is_array($legend))
-                            $legend = implode(' ', $legend);
-                        $legend = str_replace(' ', '_', strings::clean($legend));
-                    }
-                    else
-                        $legend = uniqid();
+            if ($img = $this->build($data, $width, $height))
+            {
+                if ($writeToFile && php_sapi_name() == 'cli')
+                {   
+                    if ($prefix)
+                    {
+                        // BulkPlot global name prefix has been set.
+                        $legend = $data['legend'] ?? '';
+                        if ($legend) {
+                            if (is_array($legend))
+                                $legend = implode(' ', $legend);
+                            $legend = str_replace(' ', '_', strings::clean($legend));
+                        }
+                        else
+                            $legend = uniqid();
 
-                    $fileName = "{$prefix}_{$legend}";
-                }   
-                else
-                {
-                    /*
-                        No global prefix set. File name will be in order of priority:
-                            - title, if one is set.
-                            - legend, if one is set.
-                            - random string failing everything else.
-                    */
-                    if (isset($data['title']))
-                        $chartName = $data['title'];
-                    else if (isset($data['legend'])) {
-                        $chartName = $data['legend'];
-                        if (is_array($chartName))
-                            $chartName = implode(' ', $chartName);
-                    }
+                        $fileName = "{$prefix}_{$legend}";
+                    }   
                     else
-                        $chartName = uniqid();
+                    {
+                        /*
+                            No global prefix set. File name will be in order of priority:
+                                - title, if one is set.
+                                - legend, if one is set.
+                                - random string failing everything else.
+                        */
+                        if (isset($data['title']))
+                            $chartName = $data['title'];
+                        else if (isset($data['legend'])) {
+                            $chartName = $data['legend'];
+                            if (is_array($chartName))
+                                $chartName = implode(' ', $chartName);
+                        }
+                        else
+                            $chartName = uniqid();
 
-                    $fileName = str_replace(' ', '_', $chartName);
-                }  
+                        $fileName = str_replace(' ', '_', $chartName);
+                    }  
                             
-                if (strlen($fileName) > 253)
-                    $fileName = strings::truncate($fileName, 253, 'c');
+                    if (strlen($fileName) > 253)
+                        $fileName = strings::truncate($fileName, 253, 'c');
                 
-                file_put_contents("{$this->folderPath}/{$fileName}.png", $img);
-            }
+                    file_put_contents("{$this->folderPath}/{$fileName}.png", $img);
+                }
             
-            $out[] = $img;
+                $out[] = $img;
+            }
         }
 		gc_collect_cycles();
         return $out;

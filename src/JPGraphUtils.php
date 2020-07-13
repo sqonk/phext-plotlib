@@ -25,14 +25,24 @@ class jputils
 {
     static public function render(JPGraph\Graph $chart)
     {
+        $error = null;
         ob_start();
 		try {
 			$chart->Stroke();
 	        $img = ob_get_contents();
 		}
+        catch (\Throwable $e) {
+            $error = $e;
+        }
 		finally {
 			ob_end_clean();
 		}
+        
+        if ($error) {
+            println($error->getMessage());
+            return null;
+        }
+        
         return $img;
     }
 }
