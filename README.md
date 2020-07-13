@@ -151,17 +151,23 @@ $plot->output_path('plotlibtests')->render();
 
 Theo Howell
 
+
+
 ## License
 
 The MIT License (MIT). Please see [License File](license.txt) for more information. 
 
 Please see applicable project pages for all external dependancies and thier own licensing agreements.
 
-## JPGrapgh
 
-This library utilises the excellent JPGraph library as its charting engine.
+
+## JPGraph
+
+This library utilises the excellent JPGraph library as its charting engine. 
 
 Both free and pro versions are available. Please see the <a href="https://jpgraph.net">JPGraph</a> web site for more information. 
+
+The author/maintainer of this projtect is not associated in any way with the development of JPGraph.
 
 
 
