@@ -39,8 +39,11 @@ class jputils
 			ob_end_clean();
 		}
         
-        if ($error) 
+        if ($error) {
+            println($error);
             throw new \Exception($error->getMessage());
+        }
+            
         
         return $img;
     }
