@@ -174,6 +174,10 @@ class BulkPlot
         $blockPlots = ['bar', 'barstacked', 'box', 'stock'];
 		$xseries = $graphData['xseries'] ?? null;
 		$margin = $graphData['margin'] ?? null;
+        $font = $graphData['font'] ?? null;
+        if ($font && (! is_array($font) or count($font) != 3)) {
+            throw new \InvalidArgumentException('The font config option must be an array consisting of 3 elements in order: FONT FAMILY, STYLE, SIZE. See JPGraph documentation for more information.');
+        }
         
         $chart = new JPGraph\Graph($width, $height);
 		if ($xseries && count($xseries) > 1)
@@ -192,6 +196,10 @@ class BulkPlot
 		if ($max)
         	$chart->yaxis->scale->SetAutoMax($max);
 		
+        if ($font) {
+            $chart->xaxis->SetFont(...$font);
+            $chart->yaxis->SetFont(...$font);
+        }
 		$angle = arrays::get($graphData, 'labelangle');
 		if ($angle !== null)
 	    	$chart->xaxis->SetLabelAngle($angle);
@@ -222,8 +230,12 @@ class BulkPlot
             }
         }
         
-        if (! empty($graphData['title']))
+        if (! empty($graphData['title'])) {
             $chart->title->Set($graphData['title']);
+            if ($font)
+                $chart->title->SetFont(...$font);
+        }
+            
         
         $colours = &$this->colours;
         $ccount = count($colours);
