@@ -201,8 +201,13 @@ class BulkPlot
             $chart->yaxis->SetFont(...$font);
         }
 		$angle = arrays::get($graphData, 'labelangle');
-		if ($angle !== null)
-	    	$chart->xaxis->SetLabelAngle($angle);
+		if ($angle !== null) {
+		    $chart->xaxis->SetLabelAngle($angle);
+            if (! function_exists('imagettfbbox')) {
+                throw new \Exception("The option 'labelangle' requires the GD extension (with freetype support) for the method 'imagettfbbox' but your PHP installation does not appear to have it active. You will either need to install it or omit 'labelangle' from your config options.");
+            }
+		}
+	    	
         $chart->xaxis->SetPos('min');
         
         if (arrays::get($graphData, 'hideAllTicks', false))
