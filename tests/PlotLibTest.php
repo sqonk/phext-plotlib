@@ -41,6 +41,12 @@ class PlotLibTest extends TestCase
         return $pixels;    
     }
     
+    public function testEnv()
+    {
+        $this->assertSame(true, function_exists('imagecreatefrompng'));
+        $this->assertSame(true, function_exists('imagecreatefrompng'));
+    }
+    
     public function testMultiLine()
     {
         $plot = new BulkPlot;
@@ -128,11 +134,6 @@ class PlotLibTest extends TestCase
         
         $rendered = imagecreatefromstring($img); 
         $example = imagecreatefrompng(__DIR__."/auxbars.png");
-        
-        error_log('========== rendered ==========');
-        error_log($img);
-        error_log('========== re-compiled ==========');
-        error_log(file_get_contents(__DIR__."/auxbars.png"));
         
         $rpixels = $this->pixels($rendered);
         $epixels = $this->pixels($example);
