@@ -118,8 +118,7 @@ class PlotLibTest extends TestCase
             'yformatter' => function($v) {
                 return "Vl $v";
             },
-            'labelangle' => 45,
-            'font' => [FF_ARIAL, FS_NORMAL, 8],
+            'font' => [FF_FONT1, FS_NORMAL, 8],
             'bars' => $l2,
             'barWidth' => 10,
             'barColor' => 'gray',
