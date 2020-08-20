@@ -140,7 +140,12 @@ class PlotLibTest extends TestCase
         
         foreach (sequence(0, 499) as $y) {
             foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
+                if ($rpixels[$y][$x] != $epixels[$y][$x]) {
+                    error_log("$y:$x");
+                    var_dump($epixels[$y][$x]);
+                    var_dump($rpixels[$y][$x]);
+                }
+                //$this->assertSame($epixels[$y][$x], $rpixels[$y][$x]);
             }
         }  
     }
