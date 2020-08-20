@@ -7,10 +7,16 @@ env:
     matrix:
         - COMPOSER_FLAGS="--prefer-lowest"
 
-before_install: phpenv config-add tests/travis.ini
+before_install: 
+    - pecl install gd -with-gd-native--ttf
+    - phpenv config-add tests/travis.ini
         
 install:
     - travis_retry composer update ${COMPOSER_FLAGS}
     
 script:
   - vendor/bin/phpunit --testdox tests
+  
+notifications:
+   on_success: never
+   on_failure: always
