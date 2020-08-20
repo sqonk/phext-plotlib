@@ -103,7 +103,7 @@ These are the various options available when adding a plot to the object:
     * font: A three element array containing font family, style and size (in that order) used for all text on the chart. Must be set if specifying a label angle. (See JPGraph documentation for font constants.)
     * margin: An array of 4 elements specifying the chart margin on each side.
     - labelangle: Angular rotation of the x-axis labels, default is 0.	
-    - bars: A liniar array of values to represent an auxiliary/background bar chart dataset. This will plot on it's own Y axis.
+    - bars: A liniar array of values to represent an auxiliary/background bar chart dataset. This will plot be on it's own Y axis.
     - barColor: The colour of the bars dataset, default is 'lightgray'.
 	- barWidth: The width of each bar in the bars dataset, default is 7.
 	- auxlines:	Array of auxiliary line plots, each item can contain the following options:
