@@ -82,7 +82,7 @@ These are the various options available when adding a plot to the object:
 * <code>$series</code> An array of multiple series (values) to be plotted.
 
 * <code>$options</code> An associative array containing the chart configuration.
-    - title: Title of the rendered chart.
+    - title: Title of the rendered chart, also used as the output file name when writing to file.
     - xseries: An array of values to use as the x-series. 
     - xformatter: A callback function used to format the labels of the x-series. Should take one paremeter (the value) and return the transformed value.
     - legend: When set, will indicate the name of the series to display on the chart legend.
@@ -100,15 +100,18 @@ These are the various options available when adding a plot to the object:
 	    * value: the numerical position on the respective axis that the line will be rendered.
 	    * color: a colour name (e.g. red, blue etc) for the line colour. Default is red.
 	    * width: the stroke width of the line, default is 1.
+    * font: A three element array containing font family, style and size (in that order) used for all text on the chart. Must be set if specifying a label angle. (See JPGraph documentation for font constants.)
+    * margin: An array of 4 elements specifying the chart margin on each side.
     - labelangle: Angular rotation of the x-axis labels, default is 0.	
     - bars: A liniar array of values to represent an auxiliary/background bar chart dataset. This will plot on it's own Y axis.
     - barColor: The colour of the bars dataset, default is 'lightgray'.
-    - barWidth: The width of each bar in the bars dataset, default is 7.
-    - auxlines:	Array of auxiliary line plots, each item can contain the following options:
+	- barWidth: The width of each bar in the bars dataset, default is 7.
+	- auxlines:	Array of auxiliary line plots, each item can contain the following options:
 		* values: numerical Y-values for the series.
 		* color: optional colour name (e.g. red, blue etc) for the series, default is 'lightgrey'.
 		* width: the stroke width of the line, default is 1.
 		* legend: optional label to be displayed on the legend.	
+	* configCallback: Supply a callback method to receive the JPGraph object and perform any addition and customised configuration on it. Callback Format: `myFunc($chart)`
 
 ## Example
 
