@@ -175,6 +175,8 @@ class BulkPlot
 		$xseries = $graphData['xseries'] ?? null;
 		$margin = $graphData['margin'] ?? null;
         $font = $graphData['font'] ?? null;
+        $configCallback = $graphData['configCallback'] ?? null;
+        
         if ($font && (! is_array($font) or count($font) != 3)) {
             throw new \InvalidArgumentException('The font config option must be an array consisting of 3 elements in order: FONT FAMILY, STYLE, SIZE. See JPGraph documentation for more information.');
         }
@@ -241,7 +243,13 @@ class BulkPlot
             if ($font)
                 $chart->title->SetFont(...$font);
         }
-            
+        
+        if ($configCallback) {
+            if (is_callable($configCallback))
+                $configCallback($chart);
+            else
+                throw new \Exception('A configuration callback was supplied but it is no callable!');
+        }    
         
         $colours = &$this->colours;
         $ccount = count($colours);
