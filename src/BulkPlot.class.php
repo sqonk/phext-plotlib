@@ -306,13 +306,18 @@ class BulkPlot
 			$barPlot->SetWidth($bwidth);
 			
 			$barlabel = arrays::get($graphData, 'barLegend');
-			if ($barlabel)
+			if ($barlabel) 
 				$barPlot->SetLegend($barlabel);
 			
 			$chart->AddY(0, $barPlot);
 			
 			$chart->SetYScale(0, 'lin');
 			$chart->ynaxis[0]->SetColor($bclr);
+            if ($font) {
+                $chart->ynaxis[0]->SetFont(...$font);
+                if ($chart->y2axis)
+                    $chart->y2axis->SetFont(...$font);
+            }
 		}
 
 	  	// -- then primary sets.

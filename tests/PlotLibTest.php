@@ -140,12 +140,7 @@ class PlotLibTest extends TestCase
         
         foreach (sequence(0, 499) as $y) {
             foreach (sequence(0, 699) as $x) { 
-                if ($rpixels[$y][$x] != $epixels[$y][$x]) {
-                    error_log("$y:$x");
-                    var_dump($epixels[$y][$x]);
-                    var_dump($rpixels[$y][$x]);
-                }
-                //$this->assertSame($epixels[$y][$x], $rpixels[$y][$x]);
+                $this->assertSame($epixels[$y][$x], $rpixels[$y][$x]);
             }
         }  
     }
@@ -167,6 +162,7 @@ class PlotLibTest extends TestCase
         ]);
         
         [$img] = $plot->render(700, 500, false);
+        
         $rendered = imagecreatefromstring($img); 
         $example = imagecreatefrompng(__DIR__."/inflines.png");
         
