@@ -129,12 +129,16 @@ class PlotLibTest extends TestCase
         $rendered = imagecreatefromstring($img); 
         $example = imagecreatefrompng(__DIR__."/auxbars.png");
         
+        error_log('========== rendered ==========');
+        error_log($img);
+        error_log('========== re-compiled ==========');
+        error_log(file_get_contents(__DIR__."/auxbars.png"));
+        
         $rpixels = $this->pixels($rendered);
         $epixels = $this->pixels($example);
         
         foreach (sequence(0, 499) as $y) {
             foreach (sequence(0, 699) as $x) { 
-                error_log("$y:$x");
                 $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
             }
         }  
