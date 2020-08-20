@@ -141,6 +141,31 @@ $plot->add('barstacked', [
     ]
 ]);
 
+$l1 = [19,3,2,7,9,18,4,15,12,13];
+$l2 = [17,20,19,17,19,5,13,8,15,8];
+
+// A graph with horizontal and vertical rules.
+$plot->add('line', [$l1, $l2], [
+    'title' => 'Infinite Lines',
+    'xseries' => range(1, 10),
+    'font' => [FF_FONT1, FS_NORMAL, 8],
+    'lines' => [
+        ['direction' => HORIZONTAL, 'value' => 7, 'color' => 'red'],
+        ['direction' => VERTICAL, 'value' => 4, 'color' => 'blue']
+    ]
+]);
+
+// Finally, a plot with highlighted regions.
+$plot->add('line', [$l1], [
+    'title' => 'Regions',
+    'xseries' => range(1, 10),
+    'font' => [FF_FONT1, FS_NORMAL, 8],
+    'regions' => [
+        ['x' => 3, 'y' => 20, 'x2' => 7, 'y2' => 15, 'color' => 'red@0.3'],
+        ['x' => 6, 'y' => 2, 'x2' => 10, 'y2' => 0, 'color' => 'red@0.3']
+    ]
+]);
+
 // output all charts to a subfolder called 'plotlibtests'.
 // this will output two files called 'lines.png' and 'bars.png'.
 $plot->output_path('plotlibtests')->render();
@@ -149,6 +174,16 @@ $plot->output_path('plotlibtests')->render();
 ![Lines](https://sqonk.com/opensource/phext/plotlib/docs/images/lines.png)
 
 ![Bars](https://sqonk.com/opensource/phext/plotlib/docs/images/bars.png)
+
+![Bars](https://sqonk.com/opensource/phext/plotlib/docs/images/infinite_lines.png)
+
+![Bars](https://sqonk.com/opensource/phext/plotlib/docs/images/regions.png)
+
+
+
+
+
+
 
 ## Credits
 
