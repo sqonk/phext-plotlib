@@ -199,6 +199,7 @@ class BulkPlot
         if ($font) {
             $chart->xaxis->SetFont(...$font);
             $chart->yaxis->SetFont(...$font);
+            $chart->legend->SetFont(...$font);
         }
 		$angle = arrays::get($graphData, 'labelangle');
 		if ($angle !== null) {
