@@ -8,7 +8,6 @@ env:
         - COMPOSER_FLAGS="--prefer-lowest"
 
 before_install: 
-    - pecl install gd -with-gd-native--ttf
     - phpenv config-add tests/travis.ini
         
 install:
