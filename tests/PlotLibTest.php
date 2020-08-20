@@ -119,7 +119,7 @@ class PlotLibTest extends TestCase
                 return "Vl $v";
             },
             'labelangle' => 45,
-            'font' => [FF_VERDANA, FS_NORMAL, 8],
+            'font' => [FF_ARIAL, FS_NORMAL, 8],
             'bars' => $l2,
             'barWidth' => 10,
             'barColor' => 'gray',
