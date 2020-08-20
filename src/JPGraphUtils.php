@@ -21,12 +21,20 @@ namespace sqonk\phext\plotlib;
 
 use Amenadiel\JpGraph\Graph as JPGraph;
 
+function _jputils_handle_exception($severity, $message, $file, $line) {
+    if (!(error_reporting() & $severity)) {
+        // This error code is not included in error_reporting
+        return;
+    }
+    throw new \ErrorException($message, 0, $severity, $file, $line);
+}
+
 class jputils
 {
     static public function render(JPGraph\Graph $chart)
     {
         $error = null;
-        
+        set_error_handler("\sqonk\phext\plotlib\_jputils_handle_exception");
         ob_start();
 		try {
 			$chart->Stroke();
@@ -37,6 +45,7 @@ class jputils
         }
 		finally {
 			ob_end_clean();
+            restore_error_handler();
 		}
         
         if ($error) {
