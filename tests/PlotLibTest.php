@@ -44,7 +44,7 @@ class PlotLibTest extends TestCase
     public function testEnv()
     {
         $this->assertSame(true, function_exists('imagecreatefrompng'));
-        $this->assertSame(true, function_exists('imagecreatefrompng'));
+        $this->assertSame(true, function_exists('imagecreatefromstring'));
     }
     
     public function testMultiLine()
