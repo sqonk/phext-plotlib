@@ -29,8 +29,18 @@ function _jputils_handle_exception($severity, $message, $file, $line) {
     throw new \ErrorException($message, 0, $severity, $file, $line);
 }
 
+/**
+ * A utilities class for working on a JPGraph object.
+ * 
+ * Current use is for reliably outputting the chart render while catching
+ * internal errors.
+ */
 class jputils
 {
+    /**
+     * Force the provided JPGraph object to render its contents, capturing
+     * the output and returning it to the caller.
+     */
     static public function render(JPGraph\Graph $chart)
     {
         $error = null;
@@ -52,7 +62,6 @@ class jputils
             println($error);
             throw new \Exception($error->getMessage());
         }
-            
         
         return $img;
     }

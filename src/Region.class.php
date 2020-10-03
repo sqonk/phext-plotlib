@@ -19,9 +19,14 @@ namespace sqonk\phext\plotlib;
 * permissions and limitations under the License.
 */
 
-/*
-    A visual rectangular region on a graph that represents an area between datapoints.
-*/
+/**
+ * A visual rectangular region on a graph that represents an area between data points.
+ * 
+ * This class is used by BulkPlot, which provides an interface to creating regions through
+ * the configuration options when adding a plot. 
+ * 
+ * You do not need to work with this class directly when working with BulkPlot.
+ */
 class Region
 {
     protected $xleft;
@@ -30,6 +35,15 @@ class Region
     protected $ybottom;
     protected $colour;
     
+    /**
+     * Construct a new Region at the given co-ordinates.
+     * 
+     * -- parameters:
+     * @param $xstart left-most point x-axis.
+     * @param $ystart top-most point on the y-axis.
+     * @param $xend right-most point on the x-axis.
+     * @param $yend bottom-most point on the y-axis.
+     */
     public function __construct($xstart, $ystart, $xend, $yend, $colour)
     {
         $this->xleft = $xstart;
@@ -40,31 +54,31 @@ class Region
     }
     
     // Framework function to allow the object to adjust the scale
-    function PrescaleSetup($aGraph) {
+    public function PrescaleSetup($aGraph) {
         // Nothing to do
     }
     
-    function PreStrokeAdjust($aGraph) {
+    public function PreStrokeAdjust($aGraph) {
         // Nothing to do
     }
     
-    function DoLegend($graph) {
+    public function DoLegend($graph) {
         
     }
     
-    function Min() {
+    public function Min() {
         return array(null,null);
     }
 
-    function Max() {
+    public function Max() {
         return array(null,null);
     }
     
-    function StrokeMargin($aImg) {
+    public function StrokeMargin($aImg) {
         // Nothing to do
     }
     
-    function Stroke($img, $xscale, $yscale) 
+    public function Stroke($img, $xscale, $yscale) 
     {
         $img->SetColor($this->colour);
         $img->SetLineWeight(1);
