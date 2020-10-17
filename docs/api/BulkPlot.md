@@ -74,7 +74,7 @@ Add one or more series to the plot.
 		- color: colour of the region, default is 'red'.
 		- Note that you can specify null for any of the co-ordinates to have them originate or extend to the infinate bounds of the chart.
 	- lines: Array of infinite lines to be drawn onto the chart. Each item is an associative array containing the the following options:
-		- direction: Either VERTICAL or HORIZONTAL.
+		- direction: Either 'h' or 'v'.
 		- value: the numerical position on the respective axis that the line will be rendered.
 		- color: a colour name (e.g. red, blue etc) for the line colour. Default is red.
 		- width: the stroke width of the line, default is 1.
