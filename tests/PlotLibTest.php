@@ -156,8 +156,8 @@ class PlotLibTest extends TestCase
             'xseries' => range(1, 10),
             'font' => [FF_FONT1, FS_NORMAL, 8],
             'lines' => [
-                ['direction' => HORIZONTAL, 'value' => 7, 'color' => 'red'],
-                ['direction' => VERTICAL, 'value' => 4, 'color' => 'blue']
+                ['direction' => 'h', 'value' => 7, 'color' => 'red'],
+                ['direction' => 'v', 'value' => 4, 'color' => 'blue']
             ]
         ]);
         
@@ -171,7 +171,7 @@ class PlotLibTest extends TestCase
         
         foreach (sequence(0, 499) as $y) {
             foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
+                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x], "RGB Mismatch @ $x,$y");
             }
         }  
     }
