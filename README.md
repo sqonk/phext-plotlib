@@ -67,8 +67,8 @@ $plot->add('line', [$l1, $l2], [
     'xseries' => range(1, 10),
     'font' => [FF_FONT1, FS_NORMAL, 8],
     'lines' => [
-        ['direction' => HORIZONTAL, 'value' => 7, 'color' => 'red'],
-        ['direction' => VERTICAL, 'value' => 4, 'color' => 'blue']
+        ['direction' => 'h', 'value' => 7, 'color' => 'red'],
+        ['direction' => 'v', 'value' => 4, 'color' => 'blue']
     ]
 ]);
 
