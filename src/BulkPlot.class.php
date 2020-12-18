@@ -187,7 +187,7 @@ class BulkPlot
 		if ($angle !== null) {
 		    $chart->xaxis->SetLabelAngle($angle);
             if (! function_exists('imagettfbbox')) {
-                throw new \Exception("The option 'labelangle' requires the GD extension (with freetype support) for the method 'imagettfbbox' but your PHP installation does not appear to have it active. You will either need to install it or omit 'labelangle' from your config options.");
+                throw new \RuntimeException("The option 'labelangle' requires the GD extension (with freetype support) for the method 'imagettfbbox' but your PHP installation does not appear to have it active. You will either need to install it or omit 'labelangle' from your config options.");
             }
 		}
 	    	
@@ -254,7 +254,7 @@ class BulkPlot
         if ($aux !== null)
 		{
 	        if (! is_array($aux))
-	            throw new \Exception("'auxlines' key must be a liniar array of associative arrays containing the settings for each auxiliary series.");
+	            throw new \InvalidArgumentException("'auxlines' key must be a liniar array of associative arrays containing the settings for each auxiliary series.");
 			
 			foreach ($aux as $auxseries) 
 			{
@@ -276,7 +276,7 @@ class BulkPlot
 		if ($bars !== null)
 		{
 	        if (! is_array($bars))
-	            throw new \Exception("'bars' key must be a liniar array of numerical data for display as an auxiliary series.");
+	            throw new \InvalidArgumentException("'bars' key must be a liniar array of numerical data for display as an auxiliary series.");
 			
 			$barPlot = new JPPlot\BarPlot($bars, $xseries);
 			$bclr = arrays::get($graphData, 'barColor', 'lightgray');
@@ -355,7 +355,7 @@ class BulkPlot
         if ($lines !== null)
 		{
 	        if (! is_array($lines))
-	            throw new \Exception("'lines' key must be a liniar array of associative arrays containing the settings for each line.");
+	            throw new \InvalidArgumentException("'lines' key must be a liniar array of associative arrays containing the settings for each line.");
 			
 			foreach ($lines as $line) {
 				$dir = arrays::get($line, 'direction', 'h') == 'h' ? HORIZONTAL : VERTICAL;
