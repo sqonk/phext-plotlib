@@ -57,8 +57,8 @@ class BulkPlot
     public function __construct(string $prefix = '')
     {
         $this->title = str_replace(' ', '-', strings::clean($prefix));
-        if (! defined('JPG_VERSION')) {
-            throw new \RuntimeException("PlotLib depends on the JPGraph library, you can download it directly from [https://jpgraph.net]. You can also install it via various 3rd party composer packages");
+        if (! class_exists(JPGraph\Graph::class)) {
+            throw new \RuntimeException("PlotLib depends on the JPGraph library, you can include it in your project with: 'composer require amenadiel/jpgraph'.");
         }
         
         $rgb = new \Amenadiel\JpGraph\Util\RGB;
