@@ -24,6 +24,14 @@ $ composer require sqonk/phext-plotlib
 
 
 
+## PHP 8 Compatibility
+
+The PlotLib library is compatible with PHP 8. However, due to a [minor problem in the underlying JPGraph library](https://github.com/HuasoFoundries/jpgraph/issues/99) it currently fails the unit tests when running on V4.0.0 of [composer version of JPGraph being used](https://github.com/HuasoFoundries/jpgraph). This problem is also present in the standalone V4.3.4 available from the JPGraph web site.
+
+If you wish to use PlotLib with PHP 8 you will either need to make the fix described in the link above to your installed copy, inside of the vendor folder, or wait until the JPGraph maintainers provide an official fix.
+
+
+
 ## Documentation
 
 [API Reference](docs/api/index.md) now available here.
