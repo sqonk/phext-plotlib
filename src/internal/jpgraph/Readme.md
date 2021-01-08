@@ -1,13 +1,3 @@
-# JPGraph (Unofficial Mirror)
-
-This is an unofficial mirror and composer package for JPGraph (currently version 4.3.4), with a minor patch applied to make it compatible with PHP 8.0
-
-This mirror of the project mainly exists to allow my [PlotLib](#https://github.com/sqonk/phext-plotlib) library to run without compatibility issues on PHP 8.
-
-It will be maintained as long as is necessary.
-
-
-
 ### README FOR JPGRAPH 4.3.4
 
 This package contains the JpGraph PHP library version 4.3.4
