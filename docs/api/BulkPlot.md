@@ -62,6 +62,9 @@ Add one or more series to the plot.
 - **$series** An array of multiple series (values) to be plotted.
 - **$options**  An associative arrat containing the chart configuration.
 	- title: Title of the rendered chart.
+	- xtitle: Optional title label for x-axis.
+	- ytitle: Optional title label for y-axis.
+	- configCallback: An optional callable function that allows further configuration of the JPGraph Graph object. Callback format: myFunc($graphObject, $graphData): void
 	- xseries: An array of values to use as the x-series.
 	- xformatter: A callback function used to format the labels of the x-series. `function callback($value) -> string`
 	- legend: When set, will indicate the name of the series to display on the chart legend.
@@ -78,7 +81,7 @@ Add one or more series to the plot.
 		- value: the numerical position on the respective axis that the line will be rendered.
 		- color: a colour name (e.g. red, blue etc) for the line colour. Default is red.
 		- width: the stroke width of the line, default is 1.
-	- labelangle: Angular rotation of the x-axis labels, default is 0.
+	- labelangle: Angular rotation of the x-axis labels, default is 0. As per JPGraph manual, when using the built-in GD fonts only major angles will work (0, 90 etc). For other angles you will need to use TTF fonts.
 	- bars: A liniar array of values to represent an auxiliary/background bar chart dataset. This will plot on it's own Y axis.
 	- barColor: The colour of the bars dataset, default is 'lightgray'.
 	- barWidth: The width of each bar in the bars dataset, default is 7.

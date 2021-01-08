@@ -4,7 +4,6 @@
     "type": "library",
     "require": {
 		"php": "^7.3 || ^8.0.0",
-		"amenadiel/jpgraph": "^4",
         "sqonk/phext-core": "^0.3.9 || ^0.4 || ^1"
     },
 	"keywords": ["graph","chart","plot"],
@@ -19,7 +18,14 @@
 		"files": [
 			"src/BulkPlot.class.php", 
 			"src/JPGraphUtils.php", 
-			"src/Region.class.php"
+			"src/Region.class.php",
+            "src/internal/jpgraph/src/jpgraph.php",
+            "src/internal/jpgraph/src/jpgraph_line.php",
+            "src/internal/jpgraph/src/jpgraph_bar.php",
+            "src/internal/jpgraph/src/jpgraph_pie.php",
+            "src/internal/jpgraph/src/jpgraph_scatter.php",
+            "src/internal/jpgraph/src/jpgraph_stock.php",
+            "src/internal/jpgraph/src/jpgraph_plotline.php"
 		]
     },
     "require-dev": {

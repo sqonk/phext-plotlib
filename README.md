@@ -118,7 +118,11 @@ Theo Howell
 
 ## License
 
-The MIT License (MIT). Please see [License File](license.txt) for more information. 
+**PlotLib** is released under the MIT License (MIT). Please see [License File](license.txt) for more information. This licence <u>does not</u> extend to the supplied copy of JPGraph, which has its own licensing agreement.
+
+*From the JPGraph package and web site:*
+
+**JpGraph** is released under a dual license. [QPL 1.0 (Qt Free License)](http://www.opensource.org/licenses/qtpl.php) For non-commercial, open-source or educational use and JpGraph Professional License for commercial use. [The professional version](https://jpgraph.net/pro/) also includes additional features and support.
 
 Please see applicable project pages for all external dependancies and thier own licensing agreements.
 
@@ -126,7 +130,7 @@ Please see applicable project pages for all external dependancies and thier own 
 
 ## JPGraph
 
-This library utilises the excellent JPGraph library as its charting engine. 
+This library utilises the excellent JPGraph as its charting engine. 
 
 Both free and pro versions are available. Please see the <a href="https://jpgraph.net">JPGraph</a> web site for more information. 
 

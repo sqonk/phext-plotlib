@@ -37,11 +37,33 @@ function _jputils_handle_exception($severity, $message, $file, $line) {
  */
 class jputils
 {
+    static protected $namespace = "\sqonk\phext\plotlib\internal\jpgraph";
+    
+    /**
+     * Set or Return the namespace of the underlying JPGraph library that will be used by libary
+     * to render charts.
+     * 
+     * By default it returns the internal copy of JPGraph provided by the library.
+     */
+    static public function namespace(?string $newNamespace = null)
+    {
+        if ($newNamespace === null)
+            return self::$namespace;
+        
+        self::$namespace = $newNamespace;
+    }
+    
+    static public function class(string $className): \ReflectionClass
+    {
+        $path = self::namespace()."\\$className";
+        return new \ReflectionClass($path);
+    }
+    
     /**
      * Force the provided JPGraph object to render its contents, capturing
      * the output and returning it to the caller.
      */
-    static public function render(JPGraph\Graph $chart)
+    static public function render($chart): ?string
     {
         $error = null;
         set_error_handler("\sqonk\phext\plotlib\_jputils_handle_exception");
