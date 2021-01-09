@@ -49,10 +49,10 @@ class PlotLibTest extends TestCase
         $this->assertSame(true, function_exists('imagecreatefromstring'));
     }
     
-    public function testMultiLine()
+    protected function compare(string $rendered, string $example)
     {
-        $rendered = imagecreatefromstring(multiLines());
-        $example = imagecreatefrompng(__DIR__."/lines.png");
+        $rendered = imagecreatefromstring($rendered);
+        $example = imagecreatefrompng(__DIR__."/$example.png");
         
         $rpixels = $this->pixels($rendered);
         $epixels = $this->pixels($example);
@@ -61,81 +61,66 @@ class PlotLibTest extends TestCase
             foreach (sequence(0, 699) as $x) {
                 $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
             }
-        }       
+        }  
+    }
+    
+    public function testMultiLine()
+    {
+        $this->compare(multiLines(), 'lines');      
+    }    
+    
+    public function testLineFill()
+    {
+        $this->compare(lineFills(), 'line_fills');      
+    } 
+    
+    public function testBars()
+    {
+        $this->compare(bars(), 'bars');      
     }    
 
     public function testBarsAndAuxlines()
     {
-        $rendered = imagecreatefromstring(barsAndAuxlines());
-        $example = imagecreatefrompng(__DIR__."/bars.png");
-        
-        $rpixels = $this->pixels($rendered);
-        $epixels = $this->pixels($example);
-        
-        foreach (sequence(0, 499) as $y) {
-            foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
-            }
-        }  
+        $this->compare(stackedBarsAndAuxlines(), 'stack_bars');
     }
     
     public function testBackgroundBars()
     {
-        $rendered = imagecreatefromstring(backgroundBars()); 
-        $example = imagecreatefrompng(__DIR__."/auxbars.png");
-        
-        $rpixels = $this->pixels($rendered);
-        $epixels = $this->pixels($example);
-        
-        foreach (sequence(0, 499) as $y) {
-            foreach (sequence(0, 699) as $x) { 
-                $this->assertSame($epixels[$y][$x], $rpixels[$y][$x]);
-            }
-        }  
+        $this->compare(backgroundBars(), 'auxbars');
     }
     
     public function testInfiniteLines()
     {
-        $rendered = imagecreatefromstring(infiniteLines()); 
-        $example = imagecreatefrompng(__DIR__."/Infinite_Lines.png");
-        
-        $rpixels = $this->pixels($rendered);
-        $epixels = $this->pixels($example);
-        
-        foreach (sequence(0, 499) as $y) {
-            foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x], "RGB Mismatch @ $x,$y");
-            }
-        }  
+        $this->compare(infiniteLines(), 'Infinite_Lines');
     }
     
     public function testRegions()
     {
-        $rendered = imagecreatefromstring(regions()); 
-        $example = imagecreatefrompng(__DIR__."/regions.png");
-        
-        $rpixels = $this->pixels($rendered);
-        $epixels = $this->pixels($example);
-        
-        foreach (sequence(0, 499) as $y) {
-            foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
-            }
-        }  
+        $this->compare(regions(), 'regions'); 
     }
     
     public function testStockplotAndConfigCallback()
     {
-        $rendered = imagecreatefromstring(stockplot()); 
-        $example = imagecreatefrompng(__DIR__."/candlesticks.png");
-        
-        $rpixels = $this->pixels($rendered);
-        $epixels = $this->pixels($example);
-        
-        foreach (sequence(0, 499) as $y) {
-            foreach (sequence(0, 699) as $x) { 
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
-            }
-        }  
+        $this->compare(stockplot(), 'candlesticks'); 
+    }
+    
+    public function testBasicScatter()
+    {
+        $this->compare(basicScatter(), 'scatter'); 
+    }
+    
+    public function testSquareScatter()
+    {
+        $this->compare(squareScatter(), 'square_scatter'); 
+    }
+    
+    public function testScatterLine()
+    {
+        $this->compare(scatterLine(), 'scatter_lines'); 
+    }
+    
+    public function testScatterImpulse()
+    {
+        $this->compare(scatterImpulse(), 'scatter_impulse'); 
     }
 }

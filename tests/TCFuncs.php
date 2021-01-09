@@ -24,8 +24,120 @@ function multiLines(bool $writeToFile = false): string
     return $img;
 }
 
+function lineFills(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    $l2 = [17,20,19,17,19,5,13,8,15,8];
+     
+    $plot->add('linefill', [$l2, $l1], [
+        'title' => 'line fills',
+        'xseries' => range(1, 10),
+        'font' => [FF_FONT1, FS_NORMAL, 8],
+        'xformatter' => function ($v) {
+            return "Pt $v";
+        },
+        'labelangle' => 90,
+        'xtitle' => 'Points  ',
+        'ytitle' => 'Occurances'
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile); 
+    
+    return $img;
+}
 
-function barsAndAuxlines(bool $writeToFile = false): string
+function basicScatter(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    $l2 = [17,20,19,17,19,5,13,8,15,8];
+    
+    $plot->add('scatter', [$l1, $l2], [
+        'title' => 'scatter',
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img; 
+}
+
+function squareScatter(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    $l2 = [17,20,19,17,19,5,13,8,15,8];
+    
+    $plot->add('scatter', [$l1, $l2], [
+        'title' => 'square scatter',
+        'scattershape' => MARK_SQUARE,
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img; 
+}
+
+function scatterLine(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    $l2 = [17,20,19,17,19,5,13,8,15,8];
+    
+    $plot->add('scatter', [$l1, $l2], [
+        'title' => 'scatter lines',
+        'scatterline' => true
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img; 
+}
+
+function scatterImpulse(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    
+    $plot->add('scatter', [$l1], [
+        'title' => 'scatter impulse',
+        'scatterimpulse' => true,
+        'scattershape' => MARK_SQUARE
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img; 
+}
+
+function bars(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [19,3,2,7,9,18,4,15,12,13];
+    $l2 = [17,20,19,17,19,5,13,8,15,8];
+    
+    $plot->add('bar', [$l1, $l2], [
+        'title' => 'bars',
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img; 
+}
+
+function stackedBarsAndAuxlines(bool $writeToFile = false): string
 {
     $plot = new BulkPlot;
     $plot->output_path('./');
@@ -35,7 +147,7 @@ function barsAndAuxlines(bool $writeToFile = false): string
     $l3 = [2,5,13,12,17,16,7,4,17,17];
     
     $plot->add('barstacked', [$l1, $l2], [
-        'title' => 'bars',
+        'title' => 'stack bars',
         'font' => [FF_FONT1, FS_NORMAL, 8],
         'auxlines' => [
             ['values' => $l3, 'legend' => 'auxlines']

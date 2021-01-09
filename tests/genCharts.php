@@ -4,8 +4,14 @@ require_once '../vendor/autoload.php';
 require 'TCFuncs.php';
 
 multiLines(true);
-barsAndAuxlines(true);
+stackedBarsAndAuxlines(true);
 backgroundBars(true);
+bars(true);
 infiniteLines(true);
 regions(true);
 stockplot(true);
+lineFills(true);
+basicScatter(true);
+squareScatter(true);
+scatterLine(true);
+scatterImpulse(true);

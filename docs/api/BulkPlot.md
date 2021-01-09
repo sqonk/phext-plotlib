@@ -69,6 +69,9 @@ Add one or more series to the plot.
 	- xformatter: A callback function used to format the labels of the x-series. `function callback($value) -> string`
 	- legend: When set, will indicate the name of the series to display on the chart legend.
 	- yformatter: A callback function used to format the labels of the y-series. `function callback($value) -> string`
+	- scattershape: (for scatter plots) A JPGraph constant indicating the shape of each scatter point. See JPGraph documentation for a full list of available options. Defaults to MARK_FILLEDCIRCLE.
+	- scatterimpulse: (for scatter plots) When set to `TRUE` will draw a connecting vertical line between each point and the x-axis, as is used in Impulse or Stem plots. Defaults to `FALSE`.
+	- scatterline: (for scatter plots) When set to `TRUE` will draw a connecting line between all points in the series. Defaults to `FALSE`.
 	- regions: An array of rectangular regions to be drawn onto the chart. Each item is an associative array containing the following options:
 		- x: x-datapoint that the region starts from.
 		- y: y-datapoint that the region starts from.
