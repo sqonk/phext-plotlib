@@ -126,10 +126,10 @@ function stockplot(bool $writeToFile = false): string
     $plot = new BulkPlot;
     $plot->output_path('./');
     
-    $l1 = [2,6,4,5, 4,8,1,3, 3,7,2,4, 5,9,4,6];
+    $l1 = [3,6,2,6, 6,4,3,6, 4,6,1,8, 3,2,1,7, 2,6,2,9];
     $plot->add('stock', [$l1], [
         'title' => 'Candlesticks',
-        'xseries' => range(1, 4),
+        'xseries' => range(1, 5),
         'font' => [FF_FONT1, FS_NORMAL, 8],
         'margin' => [55,55,55,55],
         'configCallback' => function($chart) {
