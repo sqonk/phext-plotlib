@@ -10,6 +10,7 @@ bars(true);
 infiniteLines(true);
 regions(true);
 stockplot(true);
+boxplot(true);
 lineFills(true);
 basicScatter(true);
 squareScatter(true);

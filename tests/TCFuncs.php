@@ -255,3 +255,26 @@ function stockplot(bool $writeToFile = false): string
     
     return $img;
 }
+
+function boxplot(bool $writeToFile = false): string
+{
+    $plot = new BulkPlot;
+    $plot->output_path('./');
+    
+    $l1 = [3,6,2,6,4, 6,4,3,6,4, 4,6,1,8,5, 3,2,1,7,4, 2,6,2,9,4];
+    $plot->add('box', [$l1], [
+        'title' => 'box',
+        'xseries' => range(1, 5),
+        'font' => [FF_FONT1, FS_NORMAL, 8],
+        'margin' => [55,55,55,55],
+        'configCallback' => function($chart) {
+            $chart->yscale->ticks->SupressZeroLabel(false);
+            $chart->xscale->ticks->SupressZeroLabel(false);
+            $chart->SetClipping(false);
+        }
+    ]);
+    
+    [$img] = $plot->render(700, 500, $writeToFile);
+    
+    return $img;
+}

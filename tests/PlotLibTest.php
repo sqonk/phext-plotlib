@@ -104,6 +104,11 @@ class PlotLibTest extends TestCase
         $this->compare(stockplot(), 'candlesticks'); 
     }
     
+    public function testBoxplot()
+    {
+        $this->compare(boxplot(), 'box'); 
+    }
+    
     public function testBasicScatter()
     {
         $this->compare(basicScatter(), 'scatter'); 
