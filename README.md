@@ -3,7 +3,9 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 [![License](https://sqonk.com/opensource/license.svg)](license.txt) [![Build Status](https://travis-ci.org/sqonk/phext-plotlib.svg?branch=master)](https://travis-ci.org/sqonk/phext-plotlib)
 
-PlotLib is a wrapper for the PHP charting library JPGraph. It is designed for quickly outputting basic charts in bulk. Many options can be configured as needed but all have defaults.
+PlotLib is a wrapper for the PHP charting library JPGraph. It is designed for quickly outputting basic charts in bulk. Many options can be configured as needed but all have defaults. 
+
+The main interface to the  library is through the BulkPlot class. While JPGraph supports a multitude of different chart types only a subset are currently supported by BulkPlot. Consider BulkPlot a convenience class that uses assumption to reduce the time required to otherwise build and render a graph.
 
 You should ideally have a general understanding of how [JPGraph](https://jpgraph.net) works in order to get the most out of this library.
 
@@ -26,11 +28,11 @@ $ composer require sqonk/phext-plotlib
 
 ## PHP 8 Compatibility
 
-The PlotLib library is compatible with PHP 8. However, due to a [minor problem in the underlying JPGraph library](https://github.com/HuasoFoundries/jpgraph/issues/99) it currently fails the unit tests when running on V4.0.0 of [composer version of JPGraph being used](https://github.com/HuasoFoundries/jpgraph). This problem is also present in the standalone V4.3.4 available from the JPGraph web site.
+*The PlotLib library is compatible with PHP 8*. However, due to a [minor problem in the underlying JPGraph library](https://github.com/HuasoFoundries/jpgraph/issues/99) it will raise an error on versions 4.3.4 and earlier. 
 
-If you wish to use PlotLib with PHP 8 you will either need to make the fix described in the link above to your installed copy, inside of the vendor folder, or wait until the JPGraph maintainers provide an official fix.
+Due to this, as of version 0.5, PlotLib no longer depends on any composer release of JPGraph and instead supplies its own patched version.
 
-
+However, also as of version 0.5, it is possible to run PlotLib with your own installed JPGraph version by [specifying a different namespace](docs/api/jputils.md).
 
 ## Documentation
 
@@ -118,7 +120,7 @@ Theo Howell
 
 ## License
 
-**PlotLib** is released under the MIT License (MIT). Please see [License File](license.txt) for more information. This licence <u>does not</u> extend to the supplied copy of JPGraph, which has its own licensing agreement.
+**PlotLib** is released under the MIT License (MIT). Please see the [License File](license.txt) for more information. This licence <u>does not</u> extend to the supplied copy of JPGraph, which has its own licensing agreement.
 
 *From the JPGraph package and web site:*
 
