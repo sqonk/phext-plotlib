@@ -126,6 +126,7 @@ class BulkPlot
      * --- value: the numerical position on the respective axis that the line will be rendered.
      * --- color: a colour name (e.g. red, blue etc) for the line colour. Default is red.
      * --- width: the stroke width of the line, default is 1.
+     * -- font: Either a singular constant for the desired font family (e.g. FS_ARIAL) or an array of up to 3 elements in the order of [FAMILY, STYLE, SIZE]. See JPGraph documentation for available options.
      * -- labelangle: Angular rotation of the x-axis labels, default is 0. As per JPGraph manual, when using the built-in GD fonts only major angles will work (0, 90 etc). For other angles you will need to use TTF fonts.
      * -- bars: A liniar array of values to represent an auxiliary/background bar chart dataset. This will plot on it's own Y axis.
      * -- barColor: The colour of the bars dataset, default is 'lightgray'.
