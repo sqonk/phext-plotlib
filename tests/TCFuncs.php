@@ -13,7 +13,6 @@ function multiLines(bool $writeToFile = false): string
     $plot->add('line', [$l1, $l2], [
         'title' => 'lines',
         'xseries' => range(1, 10),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'xformatter' => function ($v) {
             return "Pt $v";
         }
@@ -35,7 +34,6 @@ function lineFills(bool $writeToFile = false): string
     $plot->add('linefill', [$l2, $l1], [
         'title' => 'line fills',
         'xseries' => range(1, 10),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'xformatter' => function ($v) {
             return "Pt $v";
         },
@@ -148,7 +146,6 @@ function stackedBarsAndAuxlines(bool $writeToFile = false): string
     
     $plot->add('barstacked', [$l1, $l2], [
         'title' => 'stack bars',
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'auxlines' => [
             ['values' => $l3, 'legend' => 'auxlines']
         ]
@@ -176,7 +173,6 @@ function backgroundBars(bool $writeToFile = false): string
         'yformatter' => function($v) {
             return "Vl $v";
         },
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'bars' => $l2,
         'barWidth' => 10,
         'barColor' => 'gray',
@@ -198,7 +194,6 @@ function infiniteLines(bool $writeToFile = false): string
     $plot->add('line', [$l1, $l2], [
         'title' => 'Infinite Lines',
         'xseries' => range(1, 10),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'lines' => [
             ['direction' => 'h', 'value' => 7, 'color' => 'red'],
             ['direction' => 'v', 'value' => 4, 'color' => 'blue']
@@ -221,7 +216,6 @@ function regions(bool $writeToFile = false): string
     $plot->add('line', [$l1], [
         'title' => 'Regions',
         'xseries' => range(1, 10),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'regions' => [
             ['x' => 3, 'y' => 20, 'x2' => 7, 'y2' => 15, 'color' => 'red@0.3'],
             ['x' => 6, 'y' => 2, 'x2' => 10, 'y2' => 0, 'color' => 'red@0.3']
@@ -242,7 +236,6 @@ function stockplot(bool $writeToFile = false): string
     $plot->add('stock', [$l1], [
         'title' => 'Candlesticks',
         'xseries' => range(1, 5),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'margin' => [55,55,55,55],
         'configCallback' => function($chart) {
             $chart->yscale->ticks->SupressZeroLabel(false);
@@ -265,7 +258,6 @@ function boxplot(bool $writeToFile = false): string
     $plot->add('box', [$l1], [
         'title' => 'box',
         'xseries' => range(1, 5),
-        'font' => [FF_FONT1, FS_NORMAL, 8],
         'margin' => [55,55,55,55],
         'configCallback' => function($chart) {
             $chart->yscale->ticks->SupressZeroLabel(false);
