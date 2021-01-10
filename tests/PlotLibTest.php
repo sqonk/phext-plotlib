@@ -59,7 +59,7 @@ class PlotLibTest extends TestCase
         
         foreach (sequence(0, 499) as $y) {
             foreach (sequence(0, 699) as $x) {
-                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x]);
+                $this->assertEquals($epixels[$y][$x], $rpixels[$y][$x], "Coords: (x:$x,y:$y)");
             }
         }  
     }
