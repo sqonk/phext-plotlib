@@ -40,8 +40,7 @@ class jputils
     static private $namespace = INTERNAL_JPGRAPH;
     
     /**
-     * Set or return the namespace of the underlying JPGraph library that will be used by libary
-     * to render charts.
+     * Set or return the namespace of the underlying JPGraph library that will be used by PlotLib.
      * 
      * You can use this method to effectively change the version of JPGraph being used to render
      * the output.
@@ -51,10 +50,10 @@ class jputils
      * various unoffical composer packages that split the classes into sub-namespaces are 
      * <u>not</u> compatible.
      * 
-     * *Also note that as this method is responsible for loading the internal library on demand
+     * *Also note that as this method is responsible for loading the internal library on demand,
      * the namespace can only be changed if the internal copy has not already been used.*
      * 
-     * By default it returns the internal copy of JPGraph provided by the library.
+     * To obtain the current namespace being used pass NULL or omit the parameter.
      */
     static public function namespace(?string $newNamespace = null)
     {
