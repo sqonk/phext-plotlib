@@ -43,8 +43,6 @@ function lineFills(bool $writeToFile = false): string
             return "Pt $v";
         },
         'labelangle' => 90,
-        'xtitle' => 'Points  ',
-        'ytitle' => 'Occurances'
     ]);
     
     [$img] = $plot->render(700, 500, false);
