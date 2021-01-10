@@ -158,8 +158,12 @@ class BulkPlot
         $font = $graphData['font'] ?? null;
         $configCallback = $graphData['configCallback'] ?? null;
         
-        if ($font && (! is_array($font) or count($font) != 3)) {
-            throw new \InvalidArgumentException('The font config option must be an array consisting of 3 elements in order: FONT FAMILY, STYLE, SIZE. See JPGraph documentation for more information.');
+        if ($font) 
+        {
+            if (is_array($font) and count($font) > 3)
+                throw new \InvalidArgumentException('The font config option must be an array consisting of up to 3 elements in order: FONT FAMILY, STYLE, SIZE. See JPGraph documentation for more information.');
+            else if (is_int($font))
+                $font = [$font];
         }
         
         $chart = jputils::class('Graph')->newInstance($width, $height);
@@ -349,8 +353,6 @@ class BulkPlot
                     $plot->link->SetColor("$colour@0.2");
                 }
             }
-                
-            
             
             if (is_array($grouped))
                 $grouped[] = $plot;
