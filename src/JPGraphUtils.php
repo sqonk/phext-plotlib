@@ -19,8 +19,6 @@ namespace sqonk\phext\plotlib;
 * permissions and limitations under the License.
 */
 
-use Amenadiel\JpGraph\Graph as JPGraph;
-
 function _jputils_handle_exception($severity, $message, $file, $line) {
     if (!(error_reporting() & $severity)) {
         // This error code is not included in error_reporting
@@ -28,6 +26,8 @@ function _jputils_handle_exception($severity, $message, $file, $line) {
     }
     throw new \ErrorException($message, 0, $severity, $file, $line);
 }
+
+define('INTERNAL_JPGRAPH', "\sqonk\phext\plotlib\internal\jpgraph");
 
 /**
  * A utilities class for working on a JPGraph object.
@@ -37,25 +37,55 @@ function _jputils_handle_exception($severity, $message, $file, $line) {
  */
 class jputils
 {
-    static protected $namespace = "\sqonk\phext\plotlib\internal\jpgraph";
+    static private $namespace = INTERNAL_JPGRAPH;
     
     /**
-     * Set or Return the namespace of the underlying JPGraph library that will be used by libary
+     * Set or return the namespace of the underlying JPGraph library that will be used by libary
      * to render charts.
+     * 
+     * You can use this method to effectively change the version of JPGraph being used to render
+     * the output.
+     * 
+     * NOTE: When setting your own namespace, this will currently only work with copies of the 
+     * library where all classes and methods exist within the <u>one</u> namespace. The 
+     * various unoffical composer packages that split the classes into sub-namespaces are 
+     * <u>not</u> compatible.
+     * 
+     * *Also note that as this method is responsible for loading the internal library on demand
+     * the namespace can only be changed if the internal copy has not already been used.*
      * 
      * By default it returns the internal copy of JPGraph provided by the library.
      */
     static public function namespace(?string $newNamespace = null)
     {
         if ($newNamespace === null)
+        {
+            static $firstLoad = true;
+            if ($firstLoad && self::$namespace == INTERNAL_JPGRAPH)
+            {
+                # load the internal version of JPGraph.
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph.php';
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph_line.php';
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph_bar.php';
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph_scatter.php';
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph_stock.php';
+                require_once __DIR__.'/internal/jpgraph/src/jpgraph_plotline.php';
+            }
             return self::$namespace;
-        
+        }
         self::$namespace = $newNamespace;
     }
     
+    /**
+     * Used by BulkPlot to instanciate both the graph and the various
+     * plot classes from within whatever namespace has been set for the 
+     * JPGraph library.
+     */
     static public function class(string $className): \ReflectionClass
     {
-        $path = self::namespace()."\\$className";
+        if ($prefix = self::namespace() ?? '');
+            $prefix .= '\\';
+        $path = "{$prefix}$className";
         return new \ReflectionClass($path);
     }
     

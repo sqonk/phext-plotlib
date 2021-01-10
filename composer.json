@@ -18,14 +18,7 @@
 		"files": [
 			"src/BulkPlot.class.php", 
 			"src/JPGraphUtils.php", 
-			"src/Region.class.php",
-            "src/internal/jpgraph/src/jpgraph.php",
-            "src/internal/jpgraph/src/jpgraph_line.php",
-            "src/internal/jpgraph/src/jpgraph_bar.php",
-            "src/internal/jpgraph/src/jpgraph_pie.php",
-            "src/internal/jpgraph/src/jpgraph_scatter.php",
-            "src/internal/jpgraph/src/jpgraph_stock.php",
-            "src/internal/jpgraph/src/jpgraph_plotline.php"
+			"src/Region.class.php"
 		]
     },
     "require-dev": {

@@ -26,7 +26,7 @@ use sqonk\phext\core\{strings,arrays};
  * of charts using JPGraph as an engine. While JPGraph supports a multitude
  * of different chart types only a subset are currently supported by BulkPlot.
  * 
- * Consider BulkPlot a convienience class that uses assumption to reduce the time
+ * Consider BulkPlot a convenience class that uses assumption to reduce the time
  * required to otherwise build and render a graph.
  * 
  * While it offers a variety of options to configure the data and display, if you
