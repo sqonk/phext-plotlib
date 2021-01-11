@@ -100,6 +100,7 @@ class BulkPlot
      * -- bar: bar chart.
      * -- barstacked: bar chart with each series stacked atop for each data point.
      * -- scatter: scatter chart.
+     * -- stock: Candlestick chart in the format of Open,Close,Min,Max per datapoint.
      * -- box: Similar to a stock plot but with a fifth median value.
      * @param $series An array of multiple series (values) to be plotted.
      * @param $options 	An associative arrat containing the chart configuration.
