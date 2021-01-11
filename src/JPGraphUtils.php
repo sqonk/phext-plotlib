@@ -58,20 +58,8 @@ class jputils
     static public function namespace(?string $newNamespace = null)
     {
         if ($newNamespace === null)
-        {
-            static $firstLoad = true;
-            if ($firstLoad && self::$namespace == INTERNAL_JPGRAPH)
-            {
-                # load the internal version of JPGraph.
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph.php';
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph_line.php';
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph_bar.php';
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph_scatter.php';
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph_stock.php';
-                require_once __DIR__.'/internal/jpgraph/src/jpgraph_plotline.php';
-            }
             return self::$namespace;
-        }
+        
         self::$namespace = $newNamespace;
     }
     
@@ -82,8 +70,21 @@ class jputils
      */
     static public function class(string $className): \ReflectionClass
     {
-        if ($prefix = self::namespace() ?? '');
+        static $firstLoad = true;
+        if ($firstLoad && self::$namespace == INTERNAL_JPGRAPH)
+        {
+            # load the internal version of JPGraph.
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_line.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_bar.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_scatter.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_stock.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_plotline.php';
+        }
+        
+        if ($prefix = self::$namespace ?? '')
             $prefix .= '\\';
+        
         $path = "{$prefix}$className";
         return new \ReflectionClass($path);
     }
