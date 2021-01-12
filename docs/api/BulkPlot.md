@@ -58,6 +58,7 @@ Add one or more series to the plot.
 	- bar: bar chart.
 	- barstacked: bar chart with each series stacked atop for each data point.
 	- scatter: scatter chart.
+	- stock: Candlestick chart in the format of Open,Close,Min,Max per datapoint.
 	- box: Similar to a stock plot but with a fifth median value.
 - **$series** An array of multiple series (values) to be plotted.
 - **$options**  An associative arrat containing the chart configuration.
