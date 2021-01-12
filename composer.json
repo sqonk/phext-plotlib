@@ -3,7 +3,7 @@
     "description": "PlotLib is a wrapper class for the PHP charting library JPGraph for producing charts in bulk.",
     "type": "library",
     "require": {
-		"php": "^7.3 || ^8.0.0",
+		"php": "^7.3 || ^7.4 || ^8.0",
         "sqonk/phext-core": "^0.3.9 || ^0.4 || ^1"
     },
 	"keywords": ["graph","chart","plot"],
