@@ -152,9 +152,10 @@ class BulkPlot
 	// Internal method, builds a chart in the plot instance ready for output.
     protected function build(array $graphData, int $width, int $height)
     {
-        $type = $graphData['type'];
         $fillers = ['linefill', 'bar', 'barstacked'];
         $blockPlots = ['bar', 'barstacked', 'box', 'stock'];
+        
+        $type = $graphData['type'];
 		$xseries = $graphData['xseries'] ?? null;
 		$margin = $graphData['margin'] ?? null;
         $font = $graphData['font'] ?? null;
