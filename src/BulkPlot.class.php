@@ -425,16 +425,17 @@ class BulkPlot
             throw new \LengthException("No graphs registered in plot.");
         
         $out = [];
-        $prefix = $this->title ?? '';
-        if (php_sapi_name() == 'cli' && ! file_exists($this->folderPath))
-            mkdir($this->folderPath, 0777, true);
-        
+
         foreach ($this->graphs as $data)
         {
             if ($img = $this->build($data, $width, $height))
             {
                 if ($writeToFile && php_sapi_name() == 'cli')
                 {   
+                    $prefix = $this->title ?? '';
+                    if (! file_exists($this->folderPath))
+                        mkdir($this->folderPath, 0777, true);
+                    
                     if ($prefix)
                     {
                         // BulkPlot global name prefix has been set.
