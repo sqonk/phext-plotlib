@@ -111,7 +111,7 @@ class jputils
 		}
         
         if ($error) {
-            println($error);
+            error_log($error);
             throw new \Exception($error->getMessage());
         }
         
