@@ -99,7 +99,7 @@ class ErrMsgText {
 // in all methods.
 //
 class JpGraphError {
-    private static $__iImgFlg = true;
+    private static $__iImgFlg = false;
     private static $__iLogFile = '';
     private static $__iTitle = 'JpGraph Error: ';
     public static function Raise($aMsg,$aHalt=true){
