@@ -67,7 +67,7 @@ class BulkPlot
      * 
      * Defaults to 'intlin'.
      */
-    public function scale(string $value = null)
+    public function scale(string $value = null): BulkPlot
     {
         if (! $value)
             return $this->scale;
@@ -82,7 +82,7 @@ class BulkPlot
      * 
      * By default it is set to a subfolder 'plots' in the current working directory.
      */
-    public function output_path(string $path)
+    public function output_path(string $path): BulkPlot
     {
         if (strings::ends_with($path, '/'))
             $path = substr($path, 0, -1);
@@ -138,7 +138,7 @@ class BulkPlot
      * --- width: the stroke width of the line, default is 1.
      * --- legend: optional label to be displayed on the legend.
      */
-    public function add(string $type, array $series, array $options = [])
+    public function add(string $type, array $series, array $options = []): void
     {
 		foreach ($series as $item)
 			if (! is_array($item))
@@ -150,7 +150,7 @@ class BulkPlot
     }
     
 	// Internal method, builds a chart in the plot instance ready for output.
-    protected function build(array $graphData, int $width, int $height)
+    protected function build(array $graphData, int $width, int $height): ?string
     {
         $fillers = ['linefill', 'bar', 'barstacked'];
         $blockPlots = ['bar', 'barstacked', 'box', 'stock'];
@@ -419,7 +419,7 @@ class BulkPlot
      * the resulting images are both returned and written to a file. The folder the
      * files are saved to can be changed using output_path() on the objects.
      */
-    public function render(int $width = 700, int $height = 500, bool $writeToFile = true)
+    public function render(int $width = 700, int $height = 500, bool $writeToFile = false): array
     {
         if (count($this->graphs) == 0) 
             throw new \LengthException("No graphs registered in plot.");
