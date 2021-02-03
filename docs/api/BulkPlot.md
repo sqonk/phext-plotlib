@@ -28,7 +28,7 @@ Create a new BulkPlot object.
 ------
 ##### scale
 ```php
-public function scale(string $value = null) 
+public function scale(string $value = null) : sqonk\phext\plotlib\BulkPlot
 ```
 Set the scale used to render the chart. Must be a valid JPGraph type.
 
@@ -38,17 +38,19 @@ Defaults to 'intlin'.
 ------
 ##### output_path
 ```php
-public function output_path(string $path) 
+public function output_path(string $path) : sqonk\phext\plotlib\BulkPlot
 ```
-Set the location that the result plot images will be output to. If the location does not exist then it will attempt to create it at the time the plots are being made.
+Set the location that the resulting plot images will be output to. If the location does not exist then it will attempt to create it at the time the plots are being made.
 
 By default it is set to a subfolder 'plots' in the current working directory.
+
+This method is of relevance when automatically outputting to file. See `render` for more information.
 
 
 ------
 ##### add
 ```php
-public function add(string $type, array $series, array $options = []) 
+public function add(string $type, array $series, array $options = []) : void
 ```
 Add one or more series to the plot.
 
@@ -100,11 +102,19 @@ Add one or more series to the plot.
 ------
 ##### render
 ```php
-public function render(int $width = 700, int $height = 500, bool $writeToFile = true) 
+public function render(int $width = 700, int $height = 500, bool $writeToFile = false) : array
 ```
 Render the plot instance at the given pixel dimensions.
 
-If $writeToFile is `TRUE` and the script is running from the command line then the resulting images are both returned and written to a file. The folder the files are saved to can be changed using output_path() on the objects.
+- **$width** The desired pixel width of the rendered charts.
+- **$height** The desired pixel height of the rendered charts.
+- **$writeToFile** If `TRUE` then the resulting images will be written out to a file in addition to being returned as the result of the call. This parameter only has an affect when running from the CLI.
+
+
+**Throws:**  LengthException if no plots have been added prior to calling this method. 
+**Throws:**  Throwable JPGraph may generate a number of different exceptions during render-time. See the documention for possible errors that may need to be caught.
+
+**Returns:**  An array of images containing the rendered charts.
 
 
 ------
