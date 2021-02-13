@@ -26,7 +26,7 @@ function formatComment($comment)
             {
                 // standard paragraph
                 if (! starts_with(trim($para), '```') and ! starts_with(trim($para), '>'))
-                   $para = str_replace(["\n", "\t", "@return", "@throws"], [" ", " ", "**Returns:** ", "\n**Throws:** "], $para);
+                   $para = str_replace(["\n", "\t", "@return", "@throws", "@see"], [" ", " ", "**Returns:** ", "\n**Throws:** ", "\n**See:** "], $para);
             }
             else
             {
