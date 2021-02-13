@@ -9,6 +9,8 @@ The main interface to the  library is through the BulkPlot class. While JPGraph 
 
 You should ideally have a general understanding of how [JPGraph](https://jpgraph.net) works in order to get the most out of this library.
 
+You can also combine it with [Visualise](https://github.com/sqonk/phext-visualise) to hook up real-time visual output when working from the command line. 
+
 
 ## About PHEXT
 
