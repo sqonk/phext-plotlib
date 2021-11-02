@@ -1,7 +1,7 @@
 # PHEXT PlotLib
 
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
-[![License](https://sqonk.com/opensource/license.svg)](license.txt) [![Build Status](https://travis-ci.org/sqonk/phext-plotlib.svg?branch=master)](https://travis-ci.org/sqonk/phext-plotlib)
+[![Minimum PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208-yellow)](https://php.net/)
+[![License](https://sqonk.com/opensource/license.svg)](license.txt) [![Build Status](https://app.travis-ci.com/sqonk/phext-plotlib.svg?branch=master)](https://app.travis-ci.com/sqonk/phext-plotlib)
 
 PlotLib is a wrapper for the PHP charting library JPGraph. It is designed for quickly outputting basic charts in bulk. Many options can be configured as needed but all have defaults. 
 
@@ -18,16 +18,6 @@ Via Composer
 ``` bash
 $ composer require sqonk/phext-plotlib
 ```
-
-
-
-## PHP 8 Compatibility
-
-*The PlotLib library is compatible with PHP 8*. However, due to a [minor problem in the underlying JPGraph library](https://github.com/HuasoFoundries/jpgraph/issues/99) it will raise an error on versions 4.3.4 and earlier. 
-
-Due to this, as of version 0.5, PlotLib no longer depends on any composer release of JPGraph and instead supplies its own patched version.
-
-However, also as of version 0.5, it is possible to run PlotLib with your own installed JPGraph version by [specifying a different namespace](docs/api/jputils.md).
 
 ## Documentation
 
@@ -102,11 +92,6 @@ $plot->output_path('plotlibtests')->render();
 ![Bars](https://sqonk.com/opensource/phext/plotlib/docs/images/regions.png)
 
 
-
-
-
-
-
 ## Credits
 
 Theo Howell
@@ -131,7 +116,7 @@ This library utilises the excellent JPGraph as its charting engine.
 
 Both free and pro versions are available. Please see the <a href="https://jpgraph.net">JPGraph</a> web site for more information. 
 
-The author/maintainer of this projtect is not associated in any way with the development of JPGraph.
+The author/maintainer of this project is not associated in any way with the development of JPGraph.
 
-
+PlotLib bundles and utilises its own patched version that is compatible with PHP 8.
 
