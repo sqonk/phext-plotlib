@@ -106,7 +106,7 @@ class BulkPlot
      * -- stock: Candlestick chart in the format of Open,Close,Min,Max per datapoint.
      * -- box: Similar to a stock plot but with a fifth median value.
      * @param $series An array of multiple series (values) to be plotted.
-     * @param $options 	An associative arrat containing the chart configuration.
+     * @param $options 	An associative array containing the chart configuration.
      * -- title: Title of the rendered chart.
      * -- xtitle: Optional title label for x-axis.
      * -- ytitle: Optional title label for y-axis.
