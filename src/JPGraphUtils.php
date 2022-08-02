@@ -64,7 +64,7 @@ class jputils
     }
     
     /**
-     * Used by BulkPlot to instanciate both the graph and the various
+     * Used by BulkPlot to instantiate both the graph and the various
      * plot classes from within whatever namespace has been set for the 
      * JPGraph library.
      */
@@ -80,6 +80,8 @@ class jputils
             require_once __DIR__.'/internal/jpgraph/src/jpgraph_scatter.php';
             require_once __DIR__.'/internal/jpgraph/src/jpgraph_stock.php';
             require_once __DIR__.'/internal/jpgraph/src/jpgraph_plotline.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_rgb.inc.php';
+            require_once __DIR__.'/internal/jpgraph/src/jpgraph_ttf.inc.php';
         }
         
         if ($prefix = self::$namespace ?? '')

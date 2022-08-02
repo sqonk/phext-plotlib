@@ -19,7 +19,7 @@ require_once('jpgraph_theme.inc.php');
 require_once('gd_image.inc.php');
 
 // Version info
-define('JPG_VERSION','4.3.4');
+define('JPG_VERSION','4.4.1');
 
 // Minimum required PHP version
 define('MIN_PHPVERSION','5.1.0');
@@ -392,7 +392,7 @@ class DateLocale {
         }
 
         $this->iLocale = $aLocale;
-        for( $i = 0, $ofs = 0 - date('W'); $i < 7; $i++, $ofs++ ) {
+        for( $i = 0, $ofs = 0 - date('w'); $i < 7; $i++, $ofs++ ) {
             $day = date('D', strtotime("$ofs day"));
             $day[0] = strtoupper($day[0]);
             $this->iDayAbb[$aLocale][]= $day[0];
@@ -400,7 +400,7 @@ class DateLocale {
         }
 
         for($i=1; $i<=12; ++$i) {
-            list($short ,$full) = explode('|', date("M|F", strtotime("2001-$i-01")));
+            list($short ,$full) = explode('|', date("M|F",strtotime("2001-$i-01")));
             $this->iShortMonth[$aLocale][] = ucfirst($short);
             $this->iMonthName [$aLocale][] = ucfirst($full);
         }
@@ -4059,9 +4059,8 @@ class Axis extends AxisPrototype {
                 // that holds the labels set by the user. If the user hasn't
                 // specified any values we use whats in the automatically asigned
                 // labels in the maj_ticks_label
-                $tickIndex = (int)($i*$m);
-                if ( isset($this->ticks_label[$tickIndex]) ) {
-                    $label = $this->ticks_label[$tickIndex];
+                if( isset($this->ticks_label[$i *(int)$m]) ) {
+                    $label=$this->ticks_label[$i*$m];
                 }
                 else {
                     if( $aAbsLabel ) {
