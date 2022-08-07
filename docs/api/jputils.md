@@ -30,7 +30,7 @@ To obtain the current namespace being used pass `NULL` or omit the parameter.
 ```php
 static public function class(string $className) : ReflectionClass
 ```
-Used by BulkPlot to instanciate both the graph and the various plot classes from within whatever namespace has been set for the JPGraph library.
+Used by BulkPlot to instantiate both the graph and the various plot classes from within whatever namespace has been set for the JPGraph library.
 
 
 ------
