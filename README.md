@@ -106,7 +106,7 @@ Theo Howell
 
 **JpGraph** is released under a dual license. [QPL 1.0 (Qt Free License)](http://www.opensource.org/licenses/qtpl.php) For non-commercial, open-source or educational use and JpGraph Professional License for commercial use. [The professional version](https://jpgraph.net/pro/) also includes additional features and support.
 
-Please see applicable project pages for all external dependancies and thier own licensing agreements.
+Please see applicable project pages for all external dependancies and their own licensing agreements.
 
 
 
