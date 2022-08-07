@@ -118,5 +118,5 @@ Both free and pro versions are available. Please see the <a href="https://jpgrap
 
 The author/maintainer of this project is not associated in any way with the development of JPGraph.
 
-PlotLib bundles and utilises its own patched version that is compatible with PHP 8.
+PlotLib bundles and utilises its own copy of JPGraph (currently version 4.4.1) which is compatible with PHP 8.0 and later.
 
