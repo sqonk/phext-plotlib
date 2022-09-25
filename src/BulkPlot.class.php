@@ -38,13 +38,13 @@ use sqonk\phext\core\{strings,arrays};
  */
 class BulkPlot
 {
-    protected $graphs = [];
-    protected $scale = 'intlin';
-    protected $title = '';
-    protected $folderPath = 'plots';
-	protected $builtCharts = null;
+    protected array $graphs = [];
+    protected string $scale = 'intlin';
+    protected string $title = '';
+    protected string $folderPath = 'plots';
+	protected ?array $builtCharts = null;
+    protected array $colours;
     
-    static protected $cli_app;
     
     /**
      * Create a new BulkPlot object.

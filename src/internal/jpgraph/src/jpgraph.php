@@ -4277,6 +4277,7 @@ class Ticks {
 // CLASS LinearTicks
 // Description: Draw linear ticks on axis
 //===================================================
+#[AllowDynamicProperties]
 class LinearTicks extends Ticks {
     public $minor_step=1, $major_step=2;
     public $xlabel_offset=0,$xtick_offset=0;

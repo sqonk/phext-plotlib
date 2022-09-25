@@ -29,11 +29,11 @@ namespace sqonk\phext\plotlib;
  */
 class Region
 {
-    protected $xleft;
-    protected $ytop;
-    protected $xright;
-    protected $ybottom;
-    protected $colour;
+    protected int $xleft;
+    protected int $ytop;
+    protected int $xright;
+    protected int $ybottom;
+    protected int|string $colour;
     
     /**
      * Construct a new Region at the given co-ordinates.
