@@ -58,6 +58,19 @@ function formatComment($comment)
     return $comment;
 }
 
+function flattenComboTypes(array $types) {
+    $out = [];
+    foreach ($types as $t) {
+        if ($t instanceof ReflectionUnionType || $t instanceof ReflectionIntersectionType) {
+            array_push($out, flattenComboTypes($t->getTypes()));
+        }
+        else {
+            $out[] = $t;
+        }
+    }
+    return $out;
+}
+
 function generateForClass($cl)
 {
     $class = new ReflectionClass($cl);
@@ -85,8 +98,18 @@ function generateForClass($cl)
         $params = [];
         foreach ($method->getParameters() as $p) {
             $str = '';
-            if ($type = $p->getType())
-                $str .= $type->getName()." ";
+            if ($type = $p->getType()) {
+                if ($type instanceof ReflectionUnionType) {
+                    $names = implode('|', array_map(fn($t) => $t->getName(), flattenComboTypes($type->getTypes())));
+                    $str .= "$names ";
+                }
+                else {
+                    $str .= $type->getName()." ";
+                }
+            }
+            
+            if ($p->isVariadic())
+                $str .= '...';
             
             if ($p->isPassedByReference())
                 $str .= '&$'.$p->getName();
@@ -149,8 +172,15 @@ function genGlobals()
         $params = [];
         foreach ($method->getParameters() as $p) {
             $str = '';
-            if ($type = $p->getType())
-                $str .= $type->getName()." ";
+            if ($type = $p->getType()) {
+                if ($type instanceof ReflectionUnionType) {
+                    $names = implode('|', array_map(fn($t) => $t->getName(), flattenComboTypes($type->getTypes())));
+                    $str .= "$names ";
+                }
+                else {
+                    $str .= $type->getName()." ";
+                }
+            }
             
             if ($p->isVariadic())
                 $str .= '...';

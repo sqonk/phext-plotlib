@@ -28,11 +28,13 @@ Create a new BulkPlot object.
 ------
 ##### scale
 ```php
-public function scale(string $value = null) : sqonk\phext\plotlib\BulkPlot
+public function scale(string $value = '') : self|string
 ```
 Set the scale used to render the chart. Must be a valid JPGraph type.
 
 Defaults to 'intlin'.
+
+**Returns:**  BulkPlot|string When setting the value, returns the BulkPlot object, otherwise returns the current scale value.
 
 
 ------
@@ -54,7 +56,7 @@ public function add(string $type, array $series, array $options = []) : void
 ```
 Add one or more series to the plot.
 
-- **$type** Represents the type of chart (e.g line, box, bar etc). Possible values:
+- **string** $type Represents the type of chart (e.g line, box, bar etc). Possible values:
 	- line: line chart.
 	- linefill: line chart with filled area.
 	- bar: bar chart.
@@ -62,8 +64,8 @@ Add one or more series to the plot.
 	- scatter: scatter chart.
 	- stock: Candlestick chart in the format of Open,Close,Min,Max per datapoint.
 	- box: Similar to a stock plot but with a fifth median value.
-- **$series** An array of multiple series (values) to be plotted.
-- **$options**  An associative array containing the chart configuration.
+- **list<list<int|float>>** $series An array of multiple series (values) to be plotted.
+- **array<string,** mixed> $options An associative array containing the chart configuration.
 	- title: Title of the rendered chart.
 	- xtitle: Optional title label for x-axis.
 	- ytitle: Optional title label for y-axis.
@@ -106,15 +108,15 @@ public function render(int $width = 700, int $height = 500, bool $writeToFile = 
 ```
 Render the plot instance at the given pixel dimensions.
 
-- **$width** The desired pixel width of the rendered charts.
-- **$height** The desired pixel height of the rendered charts.
-- **$writeToFile** If `TRUE` then the resulting images will be written out to a file in addition to being returned as the result of the call. This parameter only has an affect when running from the CLI.
+- **int** $width The desired pixel width of the rendered charts.
+- **int** $height The desired pixel height of the rendered charts.
+- **bool** $writeToFile If `TRUE` then the resulting images will be written out to a file in addition to being returned as the result of the call. This parameter only has an affect when running from the CLI.
 
 
-**Throws:**  LengthException if no plots have been added prior to calling this method. 
-**Throws:**  Throwable JPGraph may generate a number of different exceptions during render-time. See the documention for possible errors that may need to be caught.
+**Throws:**  \LengthException if no plots have been added prior to calling this method. 
+**Throws:**  \Throwable JPGraph may generate a number of different exceptions during render-time. See the documention for possible errors that may need to be caught.
 
-**Returns:**  An array of images containing the rendered charts.
+**Returns:**  list<string> An array of images containing the rendered charts.
 
 
 ------

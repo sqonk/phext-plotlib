@@ -12,7 +12,7 @@ Current use is for reliably outputting the chart render while catching internal 
 ------
 ##### namespace
 ```php
-static public function namespace(string $newNamespace = null) 
+static public function namespace(string $newNamespace = null) : ?string
 ```
 Set or return the namespace of the underlying JPGraph library that will be used by PlotLib.
 
@@ -36,7 +36,7 @@ Used by BulkPlot to instantiate both the graph and the various plot classes from
 ------
 ##### render
 ```php
-static public function render($chart) : ?string
+static public function render(object $chart) : ?string
 ```
 Force the provided JPGraph object to render its contents, capturing the output and returning it to the caller.
 

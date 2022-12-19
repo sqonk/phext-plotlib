@@ -19,20 +19,21 @@ You do not need to work with this class directly when working with BulkPlot.
 ------
 ##### __construct
 ```php
-public function __construct($xstart, $ystart, $xend, $yend, $colour) 
+public function __construct(int $xstart, int $ystart, int $xend, int $yend, string|int $colour) 
 ```
 Construct a new Region at the given co-ordinates.
 
-- **$xstart** left-most point x-axis.
-- **$ystart** top-most point on the y-axis.
-- **$xend** right-most point on the x-axis.
-- **$yend** bottom-most point on the y-axis.
+- **int** $xstart left-most point x-axis.
+- **?int** $ystart top-most point on the y-axis. Pass `NULL` to have it use the max. value of the y-scale.
+- **int** $xend right-most point on the x-axis.
+- **?int** $yend bottom-most point on the y-axis. Pass `NULL` to have it use the min. value of the y-scale.
+- **int|string** $colour The colour to be used for the fill.
 
 
 ------
 ##### PrescaleSetup
 ```php
-public function PrescaleSetup($aGraph) 
+public function PrescaleSetup(object $aGraph) : void
 ```
 No documentation available.
 
@@ -40,7 +41,7 @@ No documentation available.
 ------
 ##### PreStrokeAdjust
 ```php
-public function PreStrokeAdjust($aGraph) 
+public function PreStrokeAdjust(object $aGraph) : void
 ```
 No documentation available.
 
@@ -48,7 +49,7 @@ No documentation available.
 ------
 ##### DoLegend
 ```php
-public function DoLegend($graph) 
+public function DoLegend(object $graph) : void
 ```
 No documentation available.
 
@@ -56,23 +57,23 @@ No documentation available.
 ------
 ##### Min
 ```php
-public function Min() 
+public function Min() : array
 ```
-No documentation available.
+**Returns:**  array{`NULL`, `NULL`}
 
 
 ------
 ##### Max
 ```php
-public function Max() 
+public function Max() : array
 ```
-No documentation available.
+**Returns:**  array{`NULL`, `NULL`}
 
 
 ------
 ##### StrokeMargin
 ```php
-public function StrokeMargin($aImg) 
+public function StrokeMargin(object $aImg) : void
 ```
 No documentation available.
 
@@ -80,7 +81,7 @@ No documentation available.
 ------
 ##### Stroke
 ```php
-public function Stroke($img, $xscale, $yscale) 
+public function Stroke(object $img, object $xscale, object $yscale) : void
 ```
 No documentation available.
 
