@@ -4286,6 +4286,8 @@ class LinearTicks extends Ticks {
     private $text_label_start=0;
     private $iManualTickPos = NULL, $iManualMinTickPos = NULL, $iManualTickLabels = NULL;
     private $iAdjustForDST = false; // If a date falls within the DST period add one hour to the diaplyed time
+    
+    protected array $ticks_label = [];
 
     function __construct() {
         $this->precision = -1;
