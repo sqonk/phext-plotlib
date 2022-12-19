@@ -43,7 +43,7 @@ define('INTERNAL_JPGRAPH', "\sqonk\phext\plotlib\internal\jpgraph");
  */
 class jputils
 {
-    static private $namespace = INTERNAL_JPGRAPH;
+    static private string $namespace = INTERNAL_JPGRAPH;
     
     /**
      * Set or return the namespace of the underlying JPGraph library that will be used by PlotLib.
@@ -61,12 +61,13 @@ class jputils
      * 
      * To obtain the current namespace being used pass NULL or omit the parameter.
      */
-    static public function namespace(?string $newNamespace = null)
+    static public function namespace(?string $newNamespace = null): ?string
     {
         if ($newNamespace === null)
             return self::$namespace;
         
         self::$namespace = $newNamespace;
+        return null;
     }
     
     /**

@@ -55,15 +55,15 @@ class Region
     }
     
     // Framework function to allow the object to adjust the scale
-    public function PrescaleSetup($aGraph) {
+    public function PrescaleSetup(object $aGraph): void {
         // Nothing to do
     }
     
-    public function PreStrokeAdjust($aGraph) {
+    public function PreStrokeAdjust(object $aGraph): void {
         // Nothing to do
     }
     
-    public function DoLegend($graph) {
+    public function DoLegend(object $graph): void {
         
     }
     
@@ -81,11 +81,11 @@ class Region
         return array(null,null);
     }
     
-    public function StrokeMargin($aImg) {
+    public function StrokeMargin(object $aImg): void {
         // Nothing to do
     }
     
-    public function Stroke($img, $xscale, $yscale): void
+    public function Stroke(object $img, object $xscale, object $yscale): void
     {
         $img->SetColor($this->colour);
         $img->SetLineWeight(1);
