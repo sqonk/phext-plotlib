@@ -72,8 +72,10 @@ class BulkPlot
      * Set the scale used to render the chart. Must be a valid JPGraph type.
      * 
      * Defaults to 'intlin'.
+     * 
+     * @return BulkPlot|string When setting the value, returns the BulkPlot object, otherwise returns the current scale value.
      */
-    public function scale(string $value = null): BulkPlot
+    public function scale(string $value = ''): self|string
     {
         if (! $value)
             return $this->scale;
