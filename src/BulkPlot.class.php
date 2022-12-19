@@ -337,10 +337,14 @@ class BulkPlot
                 $plot->SetColor("$colour@0.2");
 			}
             
-            if (arrays::contains($fillers, $type))
-                $plot->SetFillColor("$colour@0.6");
-            else if ($type == 'scatter')
-                $plot->mark->SetFillColor("$colour@0.$opacity");
+            if (isset($colour))
+            {
+                if (arrays::contains($fillers, $type))
+                    $plot->SetFillColor("$colour@0.6");
+                else if ($type == 'scatter')
+                    $plot->mark->SetFillColor("$colour@0.$opacity");
+            }
+            
             
             if (isset($graphData['width']) && arrays::contains($blockPlots, $type))
                 $plot->SetWidth($graphData['width']);
@@ -349,14 +353,16 @@ class BulkPlot
                 if ($shape = $graphData['scattershape'] ?? MARK_FILLEDCIRCLE)
                     $plot->mark->SetType($shape);
                 
-                $plot->mark->SetFillColor("$colour@0.2");
+                if (isset($colour))
+                    $plot->mark->SetFillColor("$colour@0.2");
                 
                 if (arrays::get($graphData, 'scatterimpulse'))
                     $plot->SetImpuls();
                 
                 if (arrays::get($graphData, 'scatterline')) {
                     $plot->link->Show();
-                    $plot->link->SetColor("$colour@0.2");
+                    if (isset($colour))
+                        $plot->link->SetColor("$colour@0.2");
                 }
             }
             
@@ -373,7 +379,7 @@ class BulkPlot
             else 
                 $g = jputils::class('GroupBarPlot')->newInstance($grouped);
             
-            if ($matchBorder)
+            if (isset($matchBorder))
                 $g->SetWeight(0);
             if (isset($graphData['width']))
                 $g->SetWidth($graphData['width']);

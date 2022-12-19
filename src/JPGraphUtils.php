@@ -19,7 +19,7 @@ namespace sqonk\phext\plotlib;
 * permissions and limitations under the License.
 */
 
-function _jputils_handle_exception(int $errorNo, string $errMsg, string $fileName, int $lineNum) 
+function _jputils_handle_exception(int $errorNo, string $errMsg, string $fileName, int $lineNum): bool
 {
     static $nonCritical = [
         E_WARNING, E_NOTICE, E_CORE_WARNING, E_COMPILE_WARNING, E_USER_WARNING, E_USER_NOTICE,
@@ -28,9 +28,9 @@ function _jputils_handle_exception(int $errorNo, string $errMsg, string $fileNam
     
     if (! (error_reporting() & $errorNo) || in_array(haystack:$nonCritical, needle:$errorNo)) {
         // This error code is not included in error_reporting or is not critical.
-        return;
+        return false;
     }
-    throw new \ErrorException($errMsg, 0, $errorNo, $file, $line);
+    throw new \ErrorException($errMsg, 0, $errorNo, $fileName, $lineNum);
 }
 
 define('INTERNAL_JPGRAPH', "\sqonk\phext\plotlib\internal\jpgraph");
