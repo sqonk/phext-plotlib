@@ -30,9 +30,9 @@ namespace sqonk\phext\plotlib;
 class Region
 {
     protected int $xleft;
-    protected int $ytop;
+    protected ?int $ytop;
     protected int $xright;
-    protected int $ybottom;
+    protected ?int $ybottom;
     protected int|string $colour;
     
     /**
@@ -40,12 +40,12 @@ class Region
      * 
      * -- parameters:
      * @param int $xstart left-most point x-axis.
-     * @param int $ystart top-most point on the y-axis.
+     * @param ?int $ystart top-most point on the y-axis. Pass NULL to have it use the max. value of the y-scale.
      * @param int $xend right-most point on the x-axis.
-     * @param int $yend bottom-most point on the y-axis.
+     * @param ?int $yend bottom-most point on the y-axis. Pass NULL to have it use the min. value of the y-scale.
      * @param int|string $colour The colour to be used for the fill.
      */
-    public function __construct(int $xstart, int $ystart, int $xend, int $yend, int|string $colour)
+    public function __construct(int $xstart, ?int $ystart, int $xend, ?int $yend, int|string $colour)
     {
         $this->xleft = $xstart;
         $this->ytop = $ystart;
