@@ -38,11 +38,17 @@ use sqonk\phext\core\{strings,arrays};
  */
 class BulkPlot
 {
+    /** 
+     * @var array<array<mixed>> $graphs 
+     */
     protected array $graphs = [];
     protected string $scale = 'intlin';
     protected string $title = '';
     protected string $folderPath = 'plots';
-	protected ?array $builtCharts = null;
+
+    /** 
+     * @var list<string> $colours
+     */
     protected array $colours;
     
     
@@ -97,7 +103,7 @@ class BulkPlot
      * Add one or more series to the plot.
      * 
      * -- parameters:
-     * @param $type Represents the type of chart (e.g line, box, bar etc). Possible values:
+     * @param string $type Represents the type of chart (e.g line, box, bar etc). Possible values:
      * -- line: line chart.
      * -- linefill: line chart with filled area.
      * -- bar: bar chart.
@@ -105,8 +111,8 @@ class BulkPlot
      * -- scatter: scatter chart.
      * -- stock: Candlestick chart in the format of Open,Close,Min,Max per datapoint.
      * -- box: Similar to a stock plot but with a fifth median value.
-     * @param $series An array of multiple series (values) to be plotted.
-     * @param $options 	An associative array containing the chart configuration.
+     * @param list<list<int|float>> $series An array of multiple series (values) to be plotted.
+     * @param array<string, mixed> $options An associative array containing the chart configuration.
      * -- title: Title of the rendered chart.
      * -- xtitle: Optional title label for x-axis.
      * -- ytitle: Optional title label for y-axis.
@@ -152,7 +158,13 @@ class BulkPlot
         $this->graphs[] = $data;
     }
     
-	// Internal method, builds a chart in the plot instance ready for output.
+	/**
+	 * Internal method, builds a chart in the plot instance ready for output.
+	 * 
+	 * @internal
+	 * 
+	 * @param array<mixed> $graphData
+	 */
     protected function build(array $graphData, int $width, int $height): ?string
     {
         $fillers = ['linefill', 'bar', 'barstacked'];
@@ -425,14 +437,14 @@ class BulkPlot
      * Render the plot instance at the given pixel dimensions.
      * 
      * -- parameters:
-     * @param $width The desired pixel width of the rendered charts.
-     * @param $height The desired pixel height of the rendered charts.
-     * @param $writeToFile If TRUE then the resulting images will be written out to a file in addition to being returned as the result of the call. This parameter only has an affect when running from the CLI.
+     * @param int $width The desired pixel width of the rendered charts.
+     * @param int $height The desired pixel height of the rendered charts.
+     * @param bool $writeToFile If TRUE then the resulting images will be written out to a file in addition to being returned as the result of the call. This parameter only has an affect when running from the CLI.
      * 
-     * @throws LengthException if no plots have been added prior to calling this method.
-     * @throws Throwable JPGraph may generate a number of different exceptions during render-time. See the documention for possible errors that may need to be caught.
+     * @throws \LengthException if no plots have been added prior to calling this method.
+     * @throws \Throwable JPGraph may generate a number of different exceptions during render-time. See the documention for possible errors that may need to be caught.
      * 
-     * @return An array of images containing the rendered charts.
+     * @return list<string> An array of images containing the rendered charts.
      */
     public function render(int $width = 700, int $height = 500, bool $writeToFile = false): array
     {

@@ -101,7 +101,7 @@ class jputils
      * Force the provided JPGraph object to render its contents, capturing
      * the output and returning it to the caller.
      */
-    static public function render($chart): ?string
+    static public function render(object $chart): ?string
     {
         $error = null;
         set_error_handler("\sqonk\phext\plotlib\_jputils_handle_exception");

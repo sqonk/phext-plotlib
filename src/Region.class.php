@@ -39,12 +39,13 @@ class Region
      * Construct a new Region at the given co-ordinates.
      * 
      * -- parameters:
-     * @param $xstart left-most point x-axis.
-     * @param $ystart top-most point on the y-axis.
-     * @param $xend right-most point on the x-axis.
-     * @param $yend bottom-most point on the y-axis.
+     * @param int $xstart left-most point x-axis.
+     * @param int $ystart top-most point on the y-axis.
+     * @param int $xend right-most point on the x-axis.
+     * @param int $yend bottom-most point on the y-axis.
+     * @param int|string $colour The colour to be used for the fill.
      */
-    public function __construct($xstart, $ystart, $xend, $yend, $colour)
+    public function __construct(int $xstart, int $ystart, int $xend, int $yend, int|string $colour)
     {
         $this->xleft = $xstart;
         $this->ytop = $ystart;
@@ -66,11 +67,17 @@ class Region
         
     }
     
-    public function Min() {
+    /**
+     * @return array{NULL, NULL}
+     */
+    public function Min(): array {
         return array(null,null);
     }
-
-    public function Max() {
+    
+    /**
+     * @return array{NULL, NULL}
+     */
+    public function Max(): array {
         return array(null,null);
     }
     
@@ -78,7 +85,7 @@ class Region
         // Nothing to do
     }
     
-    public function Stroke($img, $xscale, $yscale) 
+    public function Stroke($img, $xscale, $yscale): void
     {
         $img->SetColor($this->colour);
         $img->SetLineWeight(1);
