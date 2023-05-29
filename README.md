@@ -1,7 +1,7 @@
 # PHEXT PlotLib
 
 [![Minimum PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208-yellow)](https://php.net/)
-[![License](https://sqonk.com/opensource/license.svg)](license.txt) [![Build Status](https://app.travis-ci.com/sqonk/phext-plotlib.svg?branch=master)](https://app.travis-ci.com/sqonk/phext-plotlib)
+[![License](https://sqonk.com/opensource/license.svg)](license.txt)
 
 PlotLib is a wrapper for the PHP charting library JPGraph. It is designed for quickly outputting basic charts in bulk. Many options can be configured as needed but all have defaults. 
 
