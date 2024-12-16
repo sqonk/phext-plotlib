@@ -64,7 +64,7 @@ class BulkPlot
         
         $rgb = jputils::class('RGB')->newInstance();
         $this->colours = array_values(array_filter(array_keys($rgb->rgb_table), function($name) {
-            return ! strings::contains($name, 'white') && ! strings::contains($name, 'light');
+            return ! str_contains($name, 'white') && ! str_contains($name, 'light');
         }));
     }
     
@@ -95,7 +95,7 @@ class BulkPlot
      */
     public function output_path(string $path): BulkPlot
     {
-        if (strings::ends_with($path, '/'))
+        if (str_ends_with($path, '/'))
             $path = substr($path, 0, -1);
         $this->folderPath = $path;
         return $this;
@@ -387,7 +387,7 @@ class BulkPlot
         }
         
 		// group plots
-        if (strings::starts_with($type, 'bar')) {
+        if (str_starts_with($type, 'bar')) {
             if ($type == 'barstacked' && count($grouped) > 0)
                 $g = jputils::class('AccBarPlot')->newInstance($grouped);
             else 
